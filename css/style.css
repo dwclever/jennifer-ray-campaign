@@ -1,0 +1,121 @@
+:root { 
+    --primary: #1e40af; 
+    --glass-bg: rgba(255,255,255,0.15); 
+}
+
+body { 
+    background: #f9fafb; 
+    font-family: system-ui, -apple-system, sans-serif; 
+}
+
+.banner { 
+    background: linear-gradient(135deg, var(--primary), #1e3a8a); 
+    color: white; 
+    padding: 5rem 2rem; 
+}
+
+.banner h1 { 
+    font-size: clamp(2.5rem, 8vw, 4rem); 
+    font-weight: 900; 
+    background: linear-gradient(45deg, white, #e2e8f0); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text; 
+    margin-bottom: 1rem; 
+}
+
+.banner h2 { 
+    font-size: clamp(1.5rem, 4vw, 2rem); 
+    opacity: 0.95; 
+    margin-bottom: 1.5rem; 
+}
+
+.banner .lead {
+    max-width: 40rem; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.avatar { 
+    width: 12rem; 
+    height: 12rem; 
+    margin: 0 auto 2rem; 
+    background: var(--glass-bg); 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border: 4px solid rgba(255,255,255,0.3); 
+    backdrop-filter: blur(10px); 
+}
+
+.avatar i { 
+    font-size: 4rem; 
+    opacity: 0.8; 
+}
+
+.btn-glass { 
+    background: var(--glass-bg) !important; 
+    border: 2px solid rgba(255,255,255,0.3) !important; 
+    color: white !important; 
+    border-radius: 50px !important; 
+    font-weight: 700 !important; 
+    padding: 1rem 2rem !important; 
+    backdrop-filter: blur(10px) !important;
+    text-decoration: none !important;
+}
+
+.btn-glass:hover { 
+    background: rgba(255,255,255,0.25) !important; 
+    border-color: white !important; 
+    transform: translateY(-2px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important; 
+}
+
+.card-custom { 
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); 
+    border-radius: 2rem !important; 
+    border: 1px solid #e2e8f0 !important; 
+    transition: all 0.4s ease; 
+}
+
+.card-custom:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 40px 80px rgba(0,0,0,0.15); 
+    border-color: var(--primary) !important; 
+}
+
+.card-icon { 
+    width: 5rem; 
+    height: 5rem; 
+    background: var(--primary); 
+    color: white; 
+    border-radius: 1rem; 
+    font-size: 1.5rem; 
+    margin: 0 auto 1.5rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    transition: transform 0.3s ease; 
+}
+
+.card-custom:hover .card-icon { 
+    transform: scale(1.1); 
+}
+
+.cta-section { 
+    background: linear-gradient(90deg, var(--primary), #1e3a8a); 
+    color: white; 
+}
+
+.footer-custom { 
+    background: #111827; 
+    color: white; 
+}
+
+@media (max-width: 768px) { 
+    .banner { 
+        padding-top: 3rem; 
+        padding-bottom: 3rem; 
+    } 
+}
