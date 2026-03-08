@@ -1,305 +1,167 @@
 :root {
 	--gold: #d4af37;
+	--dark-red: #880505;
 	--navy: #1e3a8a;
 	--charcoal: #2d3748;
-	--cream: #fdfbf7;
-	--dark-red: #880505;
 }
 
-* {
-	box-sizing: border-box;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover,
-a:focus {
-	text-decoration: underline;
-}
-
+html,
 body {
-	font-family: Georgia, "Times New Roman", serif;
-	line-height: 1.8;
-	color: var(--charcoal);
-	min-height: 100vh;
+	overflow-x: hidden;
+	width: 100%;
+	position: relative;
+	font-size: 120%;
 	background-image: url("../images/american-flag.jpg");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-/* Page Container */
-.page-content {
-	max-width: 90vw;
-	margin: 0 auto;
-	padding: 2rem 1.5rem 0;
-	background: rgba(253, 251, 247, 0.9);
-	border-radius: 16px 16px 0 0;
-}
-
-/* Typography Utilities */
-.text-navy {
-	color: var(--navy) !important;
-}
-.text-charcoal {
-	color: var(--charcoal) !important;
-}
-.text-dark-red {
-	color: var(--dark-red) !important;
-	font-weight: bold;
-}
-
-.border-gold {
-	border-color: var(--gold) !important;
-}
-
-/* Hero/Newspaper Section */
-.hero-newspaper {
-	background: transparent;
-	color: var(--charcoal);
-	padding: 2.5rem 0 2rem;
-	position: relative;
-	overflow: hidden;
-}
-
-.hero-header .main-headline {
-	font-size: clamp(3.5rem, 10vw, 7rem);
-	font-weight: 900;
-	line-height: 1;
-	margin-bottom: 1rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-	white-space: nowrap;
-}
-
-.hero-header .sub-headline {
-	font-size: clamp(1.5rem, 4vw, 2rem);
-	font-weight: 300;
-	letter-spacing: 2px;
-	opacity: 0.88;
-	text-transform: uppercase;
-}
-
-.hero-final-text {
-	font-size: 1.3rem;
-	opacity: 0.95;
-}
-
-.lead {
-	color: var(--charcoal);
-}
-
-/* Byline */
-.byline-wrapper {
-	margin-bottom: 0.5rem;
-}
-.byline-text {
-	font-size: 0.95rem;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-}
-.byline-rule {
-	border: 0;
-	height: 4px;
-	margin: 0 auto;
-	background: linear-gradient(to right, transparent, var(--gold), transparent);
-}
-
-/* Navigation Tabs */
-.nav-tabs {
-	border-bottom: 3px solid var(--gold);
-	gap: 0.25rem;
-}
-.nav-tabs .nav-item {
-	margin-bottom: -3px;
-}
-.nav-tabs .nav-link {
-	border: none;
-	border-radius: 8px 8px 0 0;
-	color: var(--navy);
-	background-color: rgba(255, 255, 255, 0.7);
-	font-weight: 600;
-	letter-spacing: 0.02em;
-	transition: all 0.3s ease;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-.nav-tabs .nav-link:hover {
-	background-color: var(--gold);
-	color: white;
-	transform: translateY(-2px);
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-.nav-tabs .nav-link.active {
-	background-color: var(--navy);
-	color: white !important;
-	font-weight: 700;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-.nav-tabs .nav-link:focus {
-	outline: none;
-	box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.4);
-}
-
-/* Images */
-.flag-image {
+.container {
+	overflow-x: hidden;
 	max-width: 100%;
-	height: 450px;
-	object-fit: cover;
-	border-radius: 12px;
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-	border: 6px solid rgba(212, 175, 55, 0.2);
-}
-.image-wrapper {
-	margin-top: 1.5rem;
-}
-.rounded-farm-img {
-	border-radius: 1rem !important;
-	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2) !important;
-	border: 4px solid rgba(212, 175, 55, 0.3) !important;
-	max-height: 400px;
-	object-fit: cover;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
-/* Content Typography */
-.drop-cap::first-letter {
-	font-size: 4rem;
-	font-weight: bold;
-	float: left;
-	line-height: 1;
-	margin: 0.1em 0.15em 0 0;
+.navbar,
+.navbar * {
+	font-size: 1rem !important;
+}
+
+.navbar {
+	box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+	background: rgba(75, 107, 151, 0.98);
+}
+
+.navbar-brand {
+	font-size: clamp(1.2rem, 4vw, 1.8rem);
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+	color: rgba(255, 255, 255, 0.85);
+	font-weight: 500;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+	background-color: rgba(255, 255, 255, 0.25);
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+.nav-link.active {
+	background-color: #fff;
+	color: #0b5ed7 !important;
+	font-weight: 600;
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.navbar-toggler {
+	border: none;
+	padding: 0.5rem;
+}
+
+.nav-tabs {
+	border-bottom: none;
+}
+
+.container-body {
+	background-color: #ffffffe7;
+	min-height: 75vh;
+}
+
+strong {
 	color: var(--dark-red);
 }
 
-.display-4.text-navy {
-	font-weight: 700 !important;
-}
-.border-gold-thick {
-	border-top: 3px solid var(--gold) !important;
+.border-primary-subtle {
+	border-color: rgba(75, 107, 151, 0.98) !important;
 }
 
-/* Vision Cards */
-.hover-lift {
-	transition: all 0.3s ease;
-}
-.hover-lift:hover {
-	transform: translateY(-8px);
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
-}
-.vision-card {
-	border: none;
-	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-.vision-card .card-body {
-	padding: 2rem !important;
-}
-.vision-icon {
-	font-size: 2rem !important;
-	color: var(--gold) !important;
+footer,
+footer * {
+	font-size: 1rem !important;
 }
 
-/* Dates Section */
-.date-item {
-	border: 3px solid !important;
-	border-color: var(--navy) !important;
-}
-.date-highlight {
-	background: linear-gradient(135deg, var(--navy), #3b5998) !important;
-	color: white !important;
-	border-radius: 0.375rem !important;
-}
-.election-day-card {
-	border-top: 4px solid var(--gold) !important;
-	border-top-width: 4px !important;
+footer {
+	background-color: rgba(31, 41, 55, 0.98);
 }
 
-/* Footer */
-.footer-elegant {
-	background: rgba(31, 41, 55, 0.98);
-	color: #f9fafb;
-	padding: 1rem;
-	border-top: 2px solid var(--gold);
-}
-.footer-elegant a {
-	color: #f9fafb;
-}
-.footer-elegant a:hover {
+.footer-contact-link i {
 	color: var(--gold);
 }
-.signature-section h5 {
-	color: white;
-	font-size: 1.5rem;
-	margin-bottom: 2rem;
+
+.footer-contact-link a {
+	color: #e5e7eb;
+	text-decoration: none;
 }
-.footer-contact {
-	font-size: 1rem;
-	line-height: 2;
+
+.footer-contact-link a:hover,
+.footer-contact-link a:focus {
+	color: #facc15;
+	text-decoration: underline;
 }
-.footer-contact i {
-	color: var(--gold);
-	font-size: 1rem;
-}
-.footer-signature {
-	font-size: 2rem;
-	color: var(--gold);
-	font-weight: 700;
+
+/* ONLY .home-page-name gets responsive font sizing */
+.home-page-name h1 {
+	font-size: clamp(2.2rem, 8vw, 5rem) !important;
 	line-height: 1.1;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	hyphens: auto;
+	max-width: 100%;
+	padding: 0 10px;
 }
-.campaign-sign {
-	max-width: 13vw;
+
+.home-page-name h2 {
+	font-size: clamp(1.1rem, 4vw, 2rem) !important;
+}
+
+/* Text wrapping for ALL elements */
+h1,
+h2,
+h3,
+p,
+a,
+strong {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+
+img {
+	max-width: 100%;
 	height: auto;
-	width: auto;
 }
 
-/* Responsive */
-@media (min-width: 992px) {
-	.image-wrapper {
-		margin-top: 0;
-	}
-	.flag-image {
-		height: 500px;
-	}
-}
-
-@media (max-width: 992px) {
-	.signature-section {
-		border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-		padding-bottom: 0.75rem;
-		margin-bottom: 0.75rem;
-	}
-}
-
-@media (max-width: 990px) and (max-width: 1200px) {
-	.flag-image {
-		height: 350px;
-		margin-top: 2rem;
-	}
-	.col-lg-4 {
-		margin-top: 3rem;
-	}
-}
-
+/* Mobile fixes - ONLY for .home-page-name */
 @media (max-width: 768px) {
-	.main-headline {
-		font-size: 2.5rem;
+	.home-page-name h1 {
+		font-size: clamp(1.8rem, 6vw, 3rem) !important;
+		padding: 0 15px !important;
+		margin: 0 -15px 1rem -15px !important;
 	}
-	.flag-image {
-		height: 280px;
-		margin-bottom: 2rem;
+
+	.home-page-name h2 {
+		font-size: clamp(1rem, 3.5vw, 1.5rem) !important;
 	}
-	.hero-final-text {
-		font-size: 1.1rem;
+
+	.navbar-brand {
+		font-size: clamp(1rem, 5vw, 1.4rem) !important;
+		padding: 0.5rem;
 	}
-	.drop-cap::first-letter {
-		font-size: 3rem;
-	}
-	.byline-wrapper {
-		flex-direction: column;
-		text-align: center;
-	}
-	.byline-wrapper .float-end {
-		float: none !important;
-		width: 100%;
+}
+
+@media (max-width: 480px) {
+	.home-page-name h1 {
+		font-size: clamp(1.6rem, 5.5vw, 2.8rem) !important;
 	}
 }
