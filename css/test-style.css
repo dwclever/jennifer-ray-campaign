@@ -20,6 +20,8 @@ body {
 .container {
 	overflow-x: hidden;
 	max-width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 .navbar,
@@ -102,13 +104,15 @@ footer {
 	text-decoration: underline;
 }
 
-/* Mobile overflow fixes */
+/* Mobile overflow fixes - STRONGER */
 h1 {
-	font-size: clamp(2rem, 8vw, 5rem) !important;
+	font-size: clamp(1.8rem, 6vw, 5rem) !important;
 	line-height: 1.1;
 	word-break: break-word;
 	overflow-wrap: break-word;
 	hyphens: auto;
+	max-width: 100%;
+	padding: 0 10px;
 }
 
 h1,
@@ -127,9 +131,23 @@ img {
 	height: auto;
 }
 
-@media (max-width: 991px) {
+/* Aggressive mobile h1 fix */
+@media (max-width: 768px) {
+	h1 {
+		font-size: clamp(1.5rem, 5vw, 3rem) !important;
+		padding: 0 15px !important;
+		margin: 0 -15px 1rem -15px !important;
+	}
+
 	.navbar-brand {
 		font-size: clamp(1rem, 5vw, 1.4rem) !important;
 		padding: 0.5rem;
+	}
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+	h1 {
+		font-size: clamp(1.4rem, 4.5vw, 2.5rem) !important;
 	}
 }
