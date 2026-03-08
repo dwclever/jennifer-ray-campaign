@@ -80,6 +80,10 @@ strong {
 	color: var(--dark-red);
 }
 
+.border-primary-subtle {
+	border-color: rgba(75, 107, 151, 0.98) !important;
+}
+
 footer,
 footer * {
 	font-size: 1rem !important;
