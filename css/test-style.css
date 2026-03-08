@@ -104,8 +104,8 @@ footer {
 	text-decoration: underline;
 }
 
-/* Mobile overflow fixes - STRONGER */
-h1 {
+/* ONLY .home-page-name gets responsive font sizing */
+.home-page-name h1 {
 	font-size: clamp(2.2rem, 8vw, 5rem) !important;
 	line-height: 1.1;
 	word-break: break-word;
@@ -115,11 +115,11 @@ h1 {
 	padding: 0 10px;
 }
 
-h2 {
+.home-page-name h2 {
 	font-size: clamp(1.1rem, 4vw, 2rem) !important;
 }
 
-/* Text wrapping */
+/* Text wrapping for ALL elements */
 h1,
 h2,
 h3,
@@ -136,15 +136,15 @@ img {
 	height: auto;
 }
 
-/* Mobile fixes */
+/* Mobile fixes - ONLY for .home-page-name */
 @media (max-width: 768px) {
-	h1 {
+	.home-page-name h1 {
 		font-size: clamp(1.8rem, 6vw, 3rem) !important;
 		padding: 0 15px !important;
 		margin: 0 -15px 1rem -15px !important;
 	}
 
-	h2 {
+	.home-page-name h2 {
 		font-size: clamp(1rem, 3.5vw, 1.5rem) !important;
 	}
 
@@ -155,7 +155,7 @@ img {
 }
 
 @media (max-width: 480px) {
-	h1 {
+	.home-page-name h1 {
 		font-size: clamp(1.6rem, 5.5vw, 2.8rem) !important;
 	}
 }
