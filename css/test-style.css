@@ -3,17 +3,23 @@
 	--dark-red: #880505;
 }
 
-html {
-	font-size: 120%;
-}
-
+html,
 body {
+	overflow-x: hidden;
+	width: 100%;
+	position: relative;
+	font-size: 120%;
 	background-image: url("../images/american-flag.jpg");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.container {
+	overflow-x: hidden;
+	max-width: 100%;
 }
 
 .navbar,
@@ -94,4 +100,36 @@ footer {
 .footer-contact-link a:focus {
 	color: #facc15;
 	text-decoration: underline;
+}
+
+/* Mobile overflow fixes */
+h1 {
+	font-size: clamp(2rem, 8vw, 5rem) !important;
+	line-height: 1.1;
+	word-break: break-word;
+	overflow-wrap: break-word;
+	hyphens: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+strong {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+@media (max-width: 991px) {
+	.navbar-brand {
+		font-size: clamp(1rem, 5vw, 1.4rem) !important;
+		padding: 0.5rem;
+	}
 }
