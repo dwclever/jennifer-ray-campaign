@@ -8,7 +8,6 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
 		<link href="css/test-style.css" rel="stylesheet" />
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
-		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="container">
@@ -17,6 +16,7 @@
 					<a
 						class="navbar-brand flex-grow-1 me-lg-3 d-flex align-items-center justify-content-center justify-content-lg-start flex-wrap text-center text-lg-start text-wrap"
 						href="#"
+						style="text-decoration: none; pointer-events: none"
 					>
 						Putnam County · Board of Commissioners · District 4
 					</a>
@@ -33,25 +33,105 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNav">
-						<ul class="navbar-nav ms-auto">
+						<ul class="navbar-nav ms-auto nav nav-tabs" id="infoTabs">
 							<li class="nav-item">
-								<a class="nav-link active" href="#">Home</a>
+								<a class="nav-link active" href="#home-tab" data-bs-toggle="tab">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">About Me</a>
+								<a class="nav-link" href="#about" data-bs-toggle="tab">About Me</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Vision for Putnam</a>
+								<a class="nav-link" href="#vision" data-bs-toggle="tab">Vision for Putnam</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Important Dates</a>
+								<a class="nav-link" href="#dates" data-bs-toggle="tab">Important Dates</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
-			<div class="container-body">testing</div>
+			<div class="container-body">
+				<div class="tab-content" id="infoTabsContent">
+					<div class="tab-pane fade show active" id="home-tab" role="tabpanel" tabindex="0">
+						<!-- Home -->
+						<div class="container-fluid">
+							<div class="col">
+								<div class="row flex-lg-row flex-column flex-column-reverse">
+									<div class="col-lg-7 text-center text-md-start">
+										<h1 class="mb-3 text-center fw-bold" style="font-size: 5rem">Jennifer Ray</h1>
+										<h2 class="mb-4 text-center text-uppercase" style="font-size: 2rem">
+											Proven Leadership. Real Results.
+										</h2>
+										<p class="px-lg-4 px-3">
+											District 4 needs a Commissioner who shows up before the election, not just during it.
+											<strong>As the Co-Founder of the Taxpayer Watchdog Group of Putnam County</strong>, I've spent
+											years at the table—not just observing the issues, but <strong>standing up for you</strong> and
+											your wallet. My priority has always been <strong>fiscal responsibility</strong> and ensuring
+											that every single one of your tax dollars is treated with the respect it deserves.
+										</p>
+										<p class="px-lg-4 px-3">
+											I believe county government should work for every resident, not just a well-connected few. If
+											you want a leader who is <strong>Responsive, Transparent, and Accountable</strong>, I am asking
+											for your vote. Let's move past the "business as usual" approach and ensure that every decision
+											made at the admin building is fair, open, and focused on the entire community.
+										</p>
+									</div>
+									<div class="col-lg-5">
+										<div class="col">
+											<img
+												class="img-fluid rounded mx-auto d-block my-2"
+												src="images/jen-pic-2.jpeg"
+												alt="Jennifer Ray"
+											/>
+										</div>
+									</div>
+								</div>
+								<div class="row align-items-center">
+									<div class="col col-lg-7">
+										<p class="px-lg-4 px-3 mb-0">
+											<strong class="text-dark">
+												Your Voice. Your Watchdog. Working for You. Let's Improve Our County, Together ❤️
+											</strong>
+										</p>
+									</div>
+									<div class="col col-lg-5 text-center">
+										<hr />
+										<h5 class="card-title mb-3">Donations</h5>
+										<a href="https://venmo.com/u/votejenniferray" target="_blank" rel="noopener">
+											<div
+												class="mx-auto mb-3 d-inline-block"
+												style="transition: transform 0.3s ease; max-width: 35%"
+											>
+												<img
+													src="images/venmo.png"
+													alt="Donate with Venmo"
+													class="img-fluid"
+													style="filter: brightness(0.3) contrast(1.5); filter: hue-rotate(180deg) saturate(0)"
+												/>
+											</div>
+										</a>
+										<p class="small text-muted mb-0">
+											For compliance, please include your name, address, and occupation/business.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
+					<div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
+						<!-- About Me -->
+					</div>
+					<div class="tab-pane fade" id="vision" role="tabpanel" aria-labelledby="vision-tab" tabindex="0">
+						<!-- Vision for Putnam -->
+					</div>
+					<div class="tab-pane fade" id="dates" role="tabpanel" aria-labelledby="dates-tab" tabindex="0">
+						<!-- Important Dates -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer remains the same -->
 			<footer class="pt-4 px-4">
 				<div class="py-1">
 					<div class="row align-items-center g-0">
@@ -68,7 +148,6 @@
 								<i class="fas fa-envelope"></i>
 								<a href="mailto:votejenniferray@outlook.com">votejenniferray@outlook.com</a>
 							</div>
-							<!-- include other links when available -->
 							<hr class="text-warning mb-1" />
 							<span class="text-light">To schedule speaking events, please reach out via email</span>
 							<hr class="text-warning mt-1" />
@@ -80,7 +159,7 @@
 								class="border border-3 border-secondary"
 								src="images/IMG_2565.jpeg"
 								style="height: auto; width: auto; max-width: 15vw"
-							/><img />
+							/>
 						</div>
 						<div class="col-lg-1"></div>
 					</div>

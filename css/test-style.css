@@ -1,26 +1,38 @@
 :root {
 	--gold: #d4af37;
+	--dark-red: #880505;
 }
+
+html {
+	font-size: 120%;
+}
+
 body {
 	background-image: url("../images/american-flag.jpg");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-/* NAVBAR */
+.navbar,
+.navbar * {
+	font-size: 1rem !important;
+}
+
 .navbar {
 	box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
 	background: rgba(75, 107, 151, 0.98);
-	padding: 1rem 0;
 }
+
 .navbar-brand {
 	font-size: clamp(1.2rem, 4vw, 1.8rem);
 	font-weight: 700;
 	letter-spacing: 1px;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
+
 .nav-link {
 	color: rgba(255, 255, 255, 0.85);
 	font-weight: 500;
@@ -28,29 +40,43 @@ body {
 	border-radius: 0.25rem;
 	transition: all 0.2s ease-in-out;
 }
+
 .nav-link:hover {
 	background-color: rgba(255, 255, 255, 0.25);
 	color: #fff;
 	transform: translateY(-2px);
 }
+
 .nav-link.active {
 	background-color: #fff;
 	color: #0b5ed7 !important;
 	font-weight: 600;
 	box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
+
 .navbar-toggler {
 	border: none;
 	padding: 0.5rem;
 }
 
-/* MAIN CONTAINER */
+.nav-tabs {
+	border-bottom: none;
+}
+
 .container-body {
-	background-color: #ffffffdc;
+	background-color: #ffffffe7;
 	min-height: 75vh;
 }
 
-/* FOOTER */
+strong {
+	color: var(--dark-red);
+}
+
+footer,
+footer * {
+	font-size: 1rem !important;
+}
+
 footer {
 	background-color: rgba(31, 41, 55, 0.98);
 }
