@@ -1,0 +1,32 @@
+body {
+	background-image: url("../images/american-flag.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.navbar {
+	box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+	background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 50%, #6610f2 100%);
+	padding: 1rem 0;
+}
+
+.navbar-brand {
+	font-size: clamp(1.2rem, 4vw, 1.8rem);
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Only hover effects - Bootstrap handles layout */
+.nav-link:hover {
+	background: rgba(255, 255, 255, 0.25) !important;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-toggler {
+	border: none;
+	padding: 0.5rem;
+}
