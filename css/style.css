@@ -82,6 +82,10 @@ strong {
 	color: var(--dark-red);
 }
 
+.text-primary {
+	color: var(--navy) !important;
+}
+
 .border-primary-subtle {
 	border-color: rgba(75, 107, 151, 0.98) !important;
 }
