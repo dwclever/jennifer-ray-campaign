@@ -169,3 +169,15 @@ img {
 		font-size: clamp(1.6rem, 5.5vw, 2.8rem) !important;
 	}
 }
+
+@media (max-width: 576px) {
+	.vision-card-header {
+		font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+	}
+	.vision-card-icon {
+		font-size: clamp(1.2rem, 5vw, 1.8rem);
+	}
+	.vision-card-body {
+		font-size: clamp(0.8rem, 3vw, 1rem);
+	}
+}
