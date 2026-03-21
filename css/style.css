@@ -86,6 +86,12 @@ strong {
 	color: var(--navy) !important;
 }
 
+.text-handwriting-cursive {
+	font-family: "Allura", cursive;
+	font-style: italic;
+	font-size: 1.15rem;
+}
+
 .border-primary-subtle {
 	border-color: rgba(75, 107, 151, 0.98) !important;
 }
@@ -99,8 +105,16 @@ footer {
 	background-color: rgba(31, 41, 55, 0.98);
 }
 
+.footer-contact-link {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
 .footer-contact-link i {
 	color: var(--gold);
+	flex-shrink: 0;
 }
 
 .footer-contact-link a {
@@ -179,5 +193,23 @@ img {
 	}
 	.vision-card-body {
 		font-size: clamp(0.8rem, 3vw, 1rem);
+	}
+}
+
+@media (max-width: 990px) {
+	#desktop-footer-banner {
+		display: none;
+	}
+	#mobile-footer-banner {
+		display: inline-flex;
+	}
+}
+
+@media (min-width: 991px) {
+	#desktop-footer-banner {
+		display: inline-flex;
+	}
+	#mobile-footer-banner {
+		display: none;
 	}
 }
