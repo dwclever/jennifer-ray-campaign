@@ -87,9 +87,9 @@ strong {
 }
 
 .text-handwriting-cursive {
-	font-family: "Allura", cursive;
-	font-style: italic;
+	font-family: "Reenie Beeline", "Walter Turncoat", "Architects Daughter", sans-serif;
 	font-size: 1.15rem;
+	font-style: italic;
 }
 
 .border-primary-subtle {
@@ -128,7 +128,6 @@ footer {
 	text-decoration: underline;
 }
 
-/* ONLY .home-page-name gets responsive font sizing */
 .home-page-name h1 {
 	font-size: clamp(2.2rem, 8vw, 5rem) !important;
 	line-height: 1.1;
@@ -143,7 +142,6 @@ footer {
 	font-size: clamp(1.1rem, 4vw, 2rem) !important;
 }
 
-/* Text wrapping for ALL elements */
 h1,
 h2,
 h3,
@@ -160,7 +158,6 @@ img {
 	height: auto;
 }
 
-/* Mobile fixes - ONLY for .home-page-name */
 @media (max-width: 768px) {
 	.home-page-name h1 {
 		font-size: clamp(1.8rem, 6vw, 3rem) !important;
