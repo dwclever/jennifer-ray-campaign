@@ -1,6 +1,7 @@
 :root {
 	--gold: #d4af37;
 	--dark-red: #880505;
+	--text-danger: #dc3545;
 	--navy: #1e3a8a;
 	--charcoal: #2d3748;
 }
@@ -76,10 +77,6 @@ body {
 .container-body {
 	background-color: #ffffffe7;
 	min-height: 75vh;
-}
-
-strong {
-	color: var(--dark-red);
 }
 
 .text-navy {
