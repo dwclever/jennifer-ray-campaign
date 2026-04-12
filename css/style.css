@@ -211,7 +211,7 @@ img {
 .card-vote-banner {
 	border-width: 6px !important;
 	border-style: solid;
-	border-color: #880505;
+	border-color: var(--text-danger);
 	border-radius: 1rem;
 	background: #ffffff;
 	box-shadow:
@@ -239,9 +239,9 @@ img {
 }
 
 .card-vote-banner h2 {
-	color: #880505 !important;
+	color: var(--text-danger);
 	text-shadow: none;
-	margin: 0 0 1rem 0;
+	font-size: clamp(1.5rem, 4vw, 2rem) !important;
 }
 
 .card-vote-banner .card-body {
