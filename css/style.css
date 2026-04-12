@@ -207,3 +207,43 @@ img {
 		display: none;
 	}
 }
+
+.card-vote-banner {
+	border-width: 6px !important;
+	border-style: solid;
+	border-color: #880505;
+	border-radius: 1rem;
+	background: #ffffff;
+	box-shadow:
+		0 10px 30px rgba(0, 0, 0, 0.2),
+		0 0 20px rgba(136, 5, 5, 0.35);
+	position: relative;
+}
+
+.card-vote-banner::before {
+	content: "District 4";
+	position: absolute;
+	top: -16px;
+	right: 12px;
+	left: auto;
+	background: var(--navy);
+	color: white;
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding: 4px 14px;
+	border-radius: 2px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+	z-index: 10;
+}
+
+.card-vote-banner h2 {
+	color: #880505 !important;
+	text-shadow: none;
+	margin: 0 0 1rem 0;
+}
+
+.card-vote-banner .card-body {
+	padding: 1.75rem;
+}
