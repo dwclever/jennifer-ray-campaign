@@ -79,6 +79,10 @@ h2 {
 	background-color: var(--navy) !important;
 }
 
+.border-red {
+	border-color: var(--red) !important;
+}
+
 .bg-ivory {
 	background-color: var(--ivory) !important;
 }
@@ -276,6 +280,13 @@ h2 {
 	border-bottom-color: var(--red);
 }
 
+/* Navbar action buttons */
+.site-nav .btn-nav {
+	padding: 0.4rem 1rem;
+	font-size: 0.85rem;
+	white-space: nowrap;
+}
+
 /* Hero */
 .hero-section {
 	position: relative;
@@ -386,6 +397,11 @@ h2 {
 	font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
+.section-heading h2.heading-normal-case {
+	text-transform: none;
+	letter-spacing: normal;
+}
+
 /* Stats strip */
 .stats-strip {
 	padding: 3rem 0;
@@ -492,15 +508,36 @@ h2 {
 .matters-card {
 	text-align: center;
 	padding: 1.5rem 1rem;
+	border: 1px solid rgba(22, 38, 92, 0.15);
 	border-radius: 0.5rem;
 	transition:
 		transform 0.2s ease,
-		box-shadow 0.2s ease;
+		box-shadow 0.2s ease,
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.matters-card:nth-child(odd) {
+	background-color: rgba(22, 38, 92, 0.06);
+	border-color: rgba(22, 38, 92, 0.25);
+}
+
+.matters-card:nth-child(even) {
+	background-color: rgba(192, 35, 58, 0.06);
+	border-color: rgba(192, 35, 58, 0.25);
 }
 
 .matters-card:hover {
 	transform: translateY(-4px);
 	box-shadow: 0 12px 24px rgba(22, 38, 92, 0.1);
+}
+
+.matters-card:nth-child(odd):hover {
+	background-color: rgba(22, 38, 92, 0.1);
+}
+
+.matters-card:nth-child(even):hover {
+	background-color: rgba(192, 35, 58, 0.1);
 }
 
 .matters-card .matters-icon {
@@ -549,13 +586,31 @@ h2 {
 	transition:
 		transform 0.2s ease,
 		box-shadow 0.2s ease,
-		border-color 0.2s ease;
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.issue-card:nth-child(odd) {
+	background-color: rgba(22, 38, 92, 0.06);
+	border-color: rgba(22, 38, 92, 0.25);
+}
+
+.issue-card:nth-child(even) {
+	background-color: rgba(192, 35, 58, 0.06);
+	border-color: rgba(192, 35, 58, 0.25);
 }
 
 .issue-card:hover {
 	transform: translateY(-3px);
 	box-shadow: 0 10px 22px rgba(22, 38, 92, 0.12);
-	border-color: rgba(192, 35, 58, 0.3);
+}
+
+.issue-card:nth-child(odd):hover {
+	background-color: rgba(22, 38, 92, 0.1);
+}
+
+.issue-card:nth-child(even):hover {
+	background-color: rgba(192, 35, 58, 0.1);
 }
 
 .issue-card .card-header {
@@ -583,6 +638,14 @@ h2 {
 	hyphens: none !important;
 }
 
+.issue-card h4 strong.text-red {
+	font-weight: 800;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+	text-decoration-color: rgba(192, 35, 58, 0.5);
+}
+
 /* News thumbnails */
 .news-embed {
 	position: relative;
@@ -590,6 +653,21 @@ h2 {
 	overflow: hidden;
 	aspect-ratio: 16 / 10;
 	background: #000;
+}
+
+/* Message quote block */
+.quote-block {
+	font-style: italic;
+	font-family: "Playfair Display", Georgia, "Times New Roman", Times, serif;
+}
+
+.quote-card {
+	background: #fff;
+	border-radius: 0.5rem;
+}
+
+.quote-card p {
+	color: var(--charcoal);
 }
 
 .news-embed iframe {
@@ -759,6 +837,17 @@ h2 {
 	margin-right: 0.5rem;
 }
 
+.footer-banner-img {
+	max-height: 25vh;
+	width: auto;
+}
+
+@media (min-width: 768px) {
+	.footer-banner-img {
+		max-height: 18vh;
+	}
+}
+
 .footer-link-icon {
 	color: var(--gold);
 	width: 1.1rem;
@@ -790,6 +879,10 @@ h2 {
 	border-top: 4px solid var(--navy);
 	border-radius: 0.5rem;
 	background: #fff;
+}
+
+.form-panel p {
+	color: var(--charcoal);
 }
 
 .form-panel .form-control:focus {
