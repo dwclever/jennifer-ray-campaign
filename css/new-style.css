@@ -883,6 +883,10 @@ h2 {
 	aspect-ratio: 308 / 476;
 }
 
+.news-video-wrap .video-frame.fb-reel-frame {
+	aspect-ratio: 267 / 476;
+}
+
 .news-video-wrap .video-frame iframe {
 	position: absolute;
 	inset: 0;
@@ -1130,6 +1134,7 @@ h2 {
 	min-height: 2.6em;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
