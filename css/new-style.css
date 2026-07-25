@@ -287,12 +287,38 @@ h2 {
 	white-space: nowrap;
 }
 
+@media (max-width: 1199.98px) {
+	.custom-navbar .navbar-nav {
+		row-gap: 0.4rem;
+	}
+
+	.nav-cta {
+		margin-top: 0.15rem;
+	}
+
+	.nav-cta:first-of-type {
+		margin-top: 0.75rem;
+		padding-top: 0.75rem;
+		border-top: 1px solid rgba(22, 38, 92, 0.12);
+	}
+
+	.site-nav .btn-nav {
+		display: block;
+		width: 100%;
+		padding: 0.7rem 1rem;
+		font-size: 1rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 3px 8px rgba(22, 38, 92, 0.15);
+	}
+}
+
 /* Hero */
 .hero-section {
 	position: relative;
-	background-image:
-		linear-gradient(120deg, rgba(247, 247, 244, 0.94) 0%, rgba(247, 247, 244, 0.75) 45%, rgba(247, 247, 244, 0.35) 100%),
-		url("../images/lake-sinclair-hero.jpg");
+	/* Placeholder background — swap this for a real photo/graphic later.
+	   Kept as a plain CSS gradient (no external image) so there's nothing
+	   to break/hotlink; just replace with a background-image: url(...) when ready. */
+	background: linear-gradient(160deg, #eaf4fc 0%, #cfe8f7 55%, #bfe0f5 100%);
 	background-size: cover;
 	background-position: center;
 	padding: 4.5rem 0;
@@ -316,10 +342,65 @@ h2 {
 	border: 4px solid #fff;
 }
 
+.hero-photo-wrap {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	min-height: 380px;
+}
+
+.hero-photo-wrap::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: -14px;
+	transform: translateX(-50%);
+	width: calc(92% + 20px);
+	max-width: 480px;
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+	border: 3px solid var(--navy);
+	z-index: 2;
+	pointer-events: none;
+}
+
+.hero-photo-clip {
+	position: relative;
+	z-index: 1;
+	width: 92%;
+	max-width: 460px;
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+	overflow: hidden;
+	background: var(--navy);
+	box-shadow: 0 18px 36px rgba(22, 38, 92, 0.25);
+}
+
+.hero-yard-sign {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 15%;
+}
+
 @media (max-width: 991px) {
 	.hero-photo-mobile {
 		width: 100%;
 		max-width: 500px;
+	}
+
+	.hero-photo-wrap {
+		min-height: 300px;
+	}
+
+	.hero-photo-wrap::after {
+		max-width: 300px;
+	}
+
+	.hero-photo-clip {
+		max-width: 300px;
 	}
 }
 
@@ -402,6 +483,28 @@ h2 {
 	letter-spacing: normal;
 }
 
+/* Distinct "pivot" statement marking the transition into the About half of
+   the page — deliberately larger and set in the site's serif display face
+   so it reads as a moment, not just another paragraph. */
+.pivot-quote {
+	font-family: "Playfair Display", Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	font-weight: 700;
+	color: var(--navy);
+	font-size: clamp(1.9rem, 4.2vw, 2.75rem);
+	line-height: 1.25;
+}
+
+/* Shared size/weight for the three major section headers within the About
+   half of the page (Years Before the Ballot, Focusing on What Matters,
+   Choosing Putnam) — one class so they can't drift out of sync. */
+.heading-lg {
+	font-weight: 800;
+	text-transform: none;
+	letter-spacing: normal;
+	font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+}
+
 /* Stats strip */
 .stats-strip {
 	padding: 3rem 0;
@@ -431,6 +534,10 @@ h2 {
 	line-height: 1.1;
 }
 
+.stat-item .stat-number--sm {
+	font-size: 1.15rem;
+}
+
 .stat-item .stat-label {
 	font-size: 0.78rem;
 	font-weight: 700;
@@ -450,6 +557,19 @@ h2 {
 	width: 100%;
 	object-fit: cover;
 	border: 4px solid rgba(212, 175, 55, 0.3);
+}
+
+.dates-photo {
+	max-height: 340px;
+	width: 100%;
+	object-fit: cover;
+}
+
+@media (max-width: 991px) {
+	.dates-photo {
+		max-height: 220px;
+		max-width: 400px;
+	}
 }
 
 .check-list {
@@ -655,6 +775,315 @@ h2 {
 	background: #000;
 }
 
+.short-embed {
+	position: relative;
+	width: 220px;
+	max-width: 60vw;
+	aspect-ratio: 9 / 16;
+	border-radius: 0.75rem;
+	overflow: hidden;
+	box-shadow: 0 12px 28px rgba(22, 38, 92, 0.2);
+	background: #000;
+}
+
+.short-embed iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.short-embed--large {
+	width: 320px;
+	max-width: 80%;
+}
+
+.signs-photo-row {
+	max-width: 760px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.signs-photo-frame {
+	display: block;
+	width: 100%;
+	background: #fff;
+	padding: 0.4rem;
+	border-radius: 0.5rem;
+	border-top: 4px solid var(--navy);
+	box-shadow: 0 10px 22px rgba(22, 38, 92, 0.16);
+}
+
+.signs-photo-crop {
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	overflow: hidden;
+	border-radius: 0.3rem;
+	background: #dfe3ea;
+}
+
+.signs-photo-crop img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 15%;
+}
+
+.ballot-side-photo {
+	max-height: 380px;
+	width: 100%;
+	object-fit: cover;
+	object-position: center top;
+}
+
+@media (max-width: 991px) {
+	.ballot-side-photo {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+}
+
+/* Carousel media — fixed HEIGHT (not width) so photos, landscape video,
+   and portrait video all render at the same visual size regardless of
+   their native aspect ratio, instead of the slider jumping in height
+   depending on what's showing. */
+.news-photo-wrap {
+	position: relative;
+	border-radius: 0.4rem;
+	overflow: hidden;
+	height: 190px;
+	width: auto;
+	aspect-ratio: 16 / 10;
+	margin: 0 auto;
+	background: #dfe3ea;
+	cursor: pointer;
+}
+
+.news-photo-wrap img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 20%;
+}
+
+.news-photo-wrap::after {
+	content: "\f065";
+	font-family: "Font Awesome 6 Free";
+	font-weight: 900;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	background: rgba(22, 38, 92, 0.55);
+	color: #fff;
+	font-size: 0.7rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+	pointer-events: none;
+}
+
+.news-photo-wrap:hover::after {
+	opacity: 1;
+}
+
+/* Video thumbnails in the carousel — same click-to-expand pattern as photos.
+   The iframe itself has pointer-events disabled so a click on the thumbnail
+   opens the lightbox instead of trying to interact with the tiny embedded
+   player; the full-size version in the lightbox is fully interactive. */
+.news-video-wrap {
+	position: relative;
+	cursor: pointer;
+	height: 190px;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.news-video-wrap .video-frame {
+	position: relative;
+	height: 190px;
+	width: auto;
+	border-radius: 0.4rem;
+	overflow: hidden;
+	background: #000;
+	aspect-ratio: 16 / 10;
+}
+
+.news-video-wrap .video-frame.fb-video-frame {
+	aspect-ratio: 308 / 476;
+}
+
+.news-video-wrap .video-frame iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	pointer-events: none;
+}
+
+/* Dims the source platform's own thumbnail/play button so ours is the
+   obvious one to click, instead of the two competing for attention. */
+.news-video-wrap .video-scrim {
+	position: absolute;
+	inset: 0;
+	background: rgba(8, 12, 28, 0.4);
+	border-radius: 0.4rem;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.news-video-wrap .video-play-badge {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	background: var(--red);
+	border: 3px solid #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 1.15rem;
+	pointer-events: none;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+	transition: transform 0.2s ease;
+	z-index: 2;
+}
+
+.news-video-wrap:hover .video-play-badge {
+	transform: translate(-50%, -50%) scale(1.1);
+}
+
+@media (max-width: 767.98px) {
+	.news-photo-wrap,
+	.news-video-wrap,
+	.news-video-wrap .video-frame {
+		height: 150px;
+	}
+
+	.news-video-wrap .video-play-badge {
+		width: 42px;
+		height: 42px;
+		font-size: 0.95rem;
+	}
+}
+
+/* Lightbox */
+.lightbox-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(10, 14, 30, 0.85);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem 1rem;
+	z-index: 2000;
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s ease;
+}
+
+.lightbox-overlay.is-open {
+	opacity: 1;
+	visibility: visible;
+}
+
+.lightbox-content {
+	position: relative;
+	max-width: 560px;
+	width: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
+	background: #fff;
+	border-radius: 0.75rem;
+	overflow-x: hidden;
+	transform: scale(0.82);
+	transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+	box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-overlay.is-open .lightbox-content {
+	transform: scale(1);
+}
+
+.lightbox-content.lightbox-content--narrow {
+	max-width: 360px;
+}
+
+.lightbox-image-wrap {
+	width: 100%;
+	background: #000;
+	line-height: 0;
+}
+
+.lightbox-image-wrap img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 70vh;
+	object-fit: contain;
+	margin: 0 auto;
+}
+
+.lightbox-image-wrap iframe {
+	display: block;
+	width: 100%;
+	max-height: 75vh;
+	border: 0;
+	margin: 0 auto;
+}
+
+.lightbox-caption {
+	padding: 1rem 1.5rem 1.5rem;
+	font-size: 0.9rem;
+	color: var(--charcoal);
+}
+
+.lightbox-caption .news-source {
+	color: var(--red);
+	font-weight: 700;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	display: block;
+	margin-bottom: 0.25rem;
+}
+
+.lightbox-close {
+	position: absolute;
+	top: 0.6rem;
+	right: 0.6rem;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.55);
+	color: #fff;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1rem;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.lightbox-close:hover {
+	background: rgba(0, 0, 0, 0.75);
+}
+
 /* Message quote block */
 .quote-block {
 	font-style: italic;
@@ -715,6 +1144,104 @@ h2 {
 	text-transform: uppercase;
 }
 
+/* Out and About slider — custom single-step slider (not Bootstrap's carousel)
+   so each media item exists once in the DOM and advances by exactly one item
+   at a time while still showing two at once. */
+.out-about-slider {
+	position: relative;
+	overflow: hidden;
+	padding: 0 2.25rem;
+}
+
+.out-about-track {
+	display: flex;
+	gap: 1.25rem;
+	transition: transform 0.4s ease;
+}
+
+.out-about-item {
+	flex: 0 0 auto;
+	min-width: 0;
+}
+
+.news-caption {
+	min-height: 2.6em;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.out-about-control {
+	position: absolute;
+	top: 40%;
+	transform: translateY(-50%);
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: none;
+	background: #fff;
+	color: var(--navy);
+	box-shadow: 0 2px 8px rgba(22, 38, 92, 0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.9rem;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.out-about-control:hover {
+	background: var(--navy);
+	color: #fff;
+}
+
+.out-about-control-prev {
+	left: 0;
+}
+
+.out-about-control-next {
+	right: 0;
+}
+
+.out-about-dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.4rem;
+	margin-top: 0.85rem;
+}
+
+.out-about-dots button {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	border: none;
+	background-color: var(--navy);
+	opacity: 0.3;
+	padding: 0;
+	cursor: pointer;
+}
+
+.out-about-dots button.active {
+	opacity: 1;
+}
+
+@media (max-width: 767.98px) {
+	.out-about-slider {
+		padding: 0 1.1rem;
+	}
+
+	.out-about-control {
+		width: 1.6rem;
+		height: 1.6rem;
+		font-size: 0.75rem;
+	}
+
+	.news-caption {
+		font-size: 0.75rem;
+	}
+}
+
 /* Get Involved band */
 .involved-band {
 	background: var(--navy);
@@ -763,6 +1290,97 @@ h2 {
 	font-weight: 400;
 	text-transform: none;
 	letter-spacing: normal;
+}
+
+/* Endorsements */
+.endorsement-card {
+	height: 100%;
+	background: #fff;
+	border-radius: 0.5rem;
+	border-top: 4px solid var(--navy);
+	box-shadow: 0 10px 24px rgba(22, 38, 92, 0.1);
+	padding: 1.75rem 1.5rem 1.5rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.endorsement-quote-icon {
+	color: var(--red);
+	opacity: 0.35;
+	font-size: 1.4rem;
+	margin-bottom: 0.5rem;
+}
+
+.endorsement-card p {
+	font-style: italic;
+	color: var(--charcoal);
+	font-size: 0.92rem;
+	line-height: 1.55;
+}
+
+.endorsement-more {
+	transition: height 0.35s ease;
+}
+
+.endorsement-toggle {
+	align-self: flex-start;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0.25rem 0 1rem;
+	color: var(--red);
+	font-weight: 700;
+	font-size: 0.82rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	cursor: pointer;
+}
+
+.endorsement-toggle:hover {
+	color: var(--navy);
+}
+
+.endorsement-toggle i {
+	font-size: 0.7rem;
+	transition: transform 0.3s ease;
+}
+
+.endorsement-toggle[aria-expanded="true"] i {
+	transform: rotate(180deg);
+}
+
+.endorsement-toggle .show-less-label {
+	display: none;
+}
+
+.endorsement-toggle[aria-expanded="true"] .show-more-label {
+	display: none;
+}
+
+.endorsement-toggle[aria-expanded="true"] .show-less-label {
+	display: inline;
+}
+
+.endorsement-author {
+	margin-top: auto;
+	padding-top: 0.75rem;
+	border-top: 1px solid rgba(22, 38, 92, 0.1);
+	display: flex;
+	flex-direction: column;
+	line-height: 1.3;
+}
+
+.endorsement-author strong {
+	color: var(--navy);
+	font-size: 0.92rem;
+}
+
+.endorsement-author span {
+	color: var(--charcoal);
+	font-size: 0.78rem;
 }
 
 /* Testimonials */
