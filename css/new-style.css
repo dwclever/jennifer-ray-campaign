@@ -209,9 +209,6 @@ h2 {
 	min-width: 0;
 }
 
-/* Custom collapse behavior, independent of Bootstrap's fixed navbar-expand-* breakpoints.
-   Below 1200px: hamburger + stacked full-width menu (Bootstrap's collapse JS still drives the .show class).
-   At 1200px and up: menu is always visible in a row; the toggler is hidden. */
 .custom-navbar .navbar-toggler {
 	display: inline-block;
 	flex-shrink: 0;
@@ -280,7 +277,6 @@ h2 {
 	border-bottom-color: var(--red);
 }
 
-/* Navbar action buttons */
 .site-nav .btn-nav {
 	padding: 0.4rem 1rem;
 	font-size: 0.85rem;
@@ -315,26 +311,12 @@ h2 {
 /* Hero */
 .hero-section {
 	position: relative;
-	background-image: url("../images/new/courthouse_w_Jennifer.JPG");
+	background-image:
+		linear-gradient(120deg, rgba(247, 247, 244, 0.94) 0%, rgba(247, 247, 244, 0.75) 45%, rgba(247, 247, 244, 0.35) 100%),
+		url("../images/lake-sinclair-hero.jpg");
 	background-size: cover;
 	background-position: center;
-	background-repeat: no-repeat;
-	min-height: 640px;
-	display: flex;
-	align-items: center;
 	padding: 4.5rem 0;
-}
-
-.hero-section::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(90deg, rgba(8, 16, 38, 0.72) 0%, rgba(8, 16, 38, 0.45) 55%, rgba(8, 16, 38, 0.15) 100%);
-}
-
-.hero-inner {
-	position: relative;
-	z-index: 1;
 }
 
 .hero-headline {
@@ -342,27 +324,23 @@ h2 {
 	font-weight: 800;
 	line-height: 1.15;
 	text-transform: uppercase;
-	color: #fff;
-	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 2px 12px rgba(255, 255, 255, 0.6);
 }
 
 .hero-headline .accent-line {
-	color: #ff6b6b;
+	color: var(--red);
 }
 
-.hero-subtext {
-	color: #fff;
-	text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+.hero-photo {
+	border-radius: 0.5rem;
+	box-shadow: 0 20px 40px rgba(22, 38, 92, 0.35);
+	border: 4px solid #fff;
 }
 
 @media (max-width: 991px) {
-	.hero-section {
-		min-height: 480px;
-		padding: 3rem 0;
-	}
-
-	.hero-section::before {
-		background: linear-gradient(180deg, rgba(8, 16, 38, 0.35) 0%, rgba(8, 16, 38, 0.72) 65%, rgba(8, 16, 38, 0.8) 100%);
+	.hero-photo-mobile {
+		width: 100%;
+		max-width: 500px;
 	}
 }
 
@@ -445,9 +423,6 @@ h2 {
 	letter-spacing: normal;
 }
 
-/* Distinct "pivot" statement marking the transition into the About half of
-   the page — deliberately larger and set in the site's serif display face
-   so it reads as a moment, not just another paragraph. */
 .pivot-quote {
 	font-family: "Playfair Display", Georgia, "Times New Roman", Times, serif;
 	font-style: italic;
@@ -457,9 +432,6 @@ h2 {
 	line-height: 1.25;
 }
 
-/* Shared size/weight for the three major section headers within the About
-   half of the page (Years Before the Ballot, Focusing on What Matters,
-   Choosing Putnam) — one class so they can't drift out of sync. */
 .heading-lg {
 	font-weight: 800;
 	text-transform: none;
@@ -761,6 +733,42 @@ h2 {
 	max-width: 80%;
 }
 
+.short-embed--poster {
+	cursor: pointer;
+}
+
+.short-embed__poster-img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.short-embed__play-badge {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	background: var(--red);
+	border: 3px solid #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 1.2rem;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+	transition: transform 0.2s ease;
+}
+
+.short-embed--poster:hover .short-embed__play-badge {
+	transform: translate(-50%, -50%) scale(1.1);
+}
+
 .signs-photo-row {
 	max-width: 760px;
 	margin-left: auto;
@@ -807,10 +815,6 @@ h2 {
 	}
 }
 
-/* Carousel media — fixed HEIGHT (not width) so photos, landscape video,
-   and portrait video all render at the same visual size regardless of
-   their native aspect ratio, instead of the slider jumping in height
-   depending on what's showing. */
 .news-photo-wrap {
 	position: relative;
 	border-radius: 0.4rem;
@@ -830,6 +834,10 @@ h2 {
 	height: 100%;
 	object-fit: cover;
 	object-position: center 20%;
+}
+
+.news-photo-wrap--bottom img {
+	object-position: center 85%;
 }
 
 .news-photo-wrap::after {
@@ -857,10 +865,6 @@ h2 {
 	opacity: 1;
 }
 
-/* Video thumbnails in the carousel — same click-to-expand pattern as photos.
-   The iframe itself has pointer-events disabled so a click on the thumbnail
-   opens the lightbox instead of trying to interact with the tiny embedded
-   player; the full-size version in the lightbox is fully interactive. */
 .news-video-wrap {
 	position: relative;
 	cursor: pointer;
@@ -896,8 +900,6 @@ h2 {
 	pointer-events: none;
 }
 
-/* Dims the source platform's own thumbnail/play button so ours is the
-   obvious one to click, instead of the two competing for attention. */
 .news-video-wrap .video-scrim {
 	position: absolute;
 	inset: 0;
@@ -1110,9 +1112,6 @@ h2 {
 	text-transform: uppercase;
 }
 
-/* Out and About slider — custom single-step slider (not Bootstrap's carousel)
-   so each media item exists once in the DOM and advances by exactly one item
-   at a time while still showing two at once. */
 .out-about-slider {
 	position: relative;
 	overflow: hidden;

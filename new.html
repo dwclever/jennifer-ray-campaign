@@ -57,20 +57,23 @@
 		</nav>
 
 		<section class="hero-section" id="home">
-			<div class="container px-4 hero-inner">
-				<div class="row justify-content-center justify-content-lg-start">
-					<div class="col-lg-6 text-center text-lg-start">
-						<h1 class="hero-headline mb-4">
+			<div class="container px-4">
+				<div class="row align-items-center gy-4">
+					<div class="col-lg-6 order-2 order-lg-1">
+						<h1 class="hero-headline text-navy mb-4">
 							<span class="accent-line">&#9733; Actions &#9733;</span><br />
 							Speak Louder<br />
 							Than Words
 						</h1>
-						<p class="hero-subtext fs-5 mb-0 mx-auto mx-lg-0" style="max-width: 32rem">
+						<p class="fs-5 mb-4" style="max-width: 32rem">
 							An advocate for taxpayers,<br />
 							a neighbor who listens, and<br />
 							a leader willing to ask the hard questions
 							<b class="text-decoration-underline fst-italic text-danger">before</b> they become expensive problems.
 						</p>
+					</div>
+					<div class="col-lg-6 order-1 order-lg-2 text-center">
+						<img src="images/jen-pic-2.jpeg" alt="Jennifer Ray" class="img-fluid hero-photo hero-photo-mobile" />
 					</div>
 				</div>
 			</div>
@@ -135,14 +138,17 @@
 			<div class="container px-4 py-3">
 				<div class="row align-items-center gy-4 mb-5">
 					<div class="col-lg-5 text-center">
-						<div class="short-embed short-embed--large mx-auto">
-							<iframe
-								src="https://www.youtube.com/embed/YfKQkAMSHpc"
-								title="Jennifer Ray"
-								loading="lazy"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								allowfullscreen
-							></iframe>
+						<div
+							class="short-embed short-embed--large short-embed--poster mx-auto"
+							id="jenniferShortPoster"
+							data-video-src="https://www.youtube.com/embed/YfKQkAMSHpc?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
+							data-video-title="Jennifer Ray"
+							role="button"
+							tabindex="0"
+							aria-label="Play video"
+						>
+							<img src="images/new/jennifer_introduction.png" alt="Jennifer Ray" class="short-embed__poster-img" />
+							<span class="short-embed__play-badge"><i class="fas fa-play"></i></span>
 						</div>
 					</div>
 					<div class="col-lg-7">
@@ -627,6 +633,18 @@
 										Enjoying the natural beauty of Crooked Creek
 									</div>
 								</div>
+								<div class="out-about-item">
+									<div class="news-photo-wrap news-photo-wrap--bottom">
+										<img
+											src="images/new/jennifer_ice_cream.jpg"
+											alt="Jennifer Ray enjoying ice cream with the community"
+										/>
+									</div>
+									<div class="news-caption">
+										<span class="news-source d-block">Out and About</span>
+										Cooling off with neighbors over ice cream
+									</div>
+								</div>
 							</div>
 							<button class="out-about-control out-about-control-prev" type="button" id="outAboutPrev" aria-label="Previous">
 								<i class="fas fa-chevron-left"></i>
@@ -1104,7 +1122,7 @@
 								<i class="fas fa-chevron-down"></i>
 							</button>
 							<div class="endorsement-author">
-								<strong>GK Konzelman</strong>
+								<strong>G Konzelman</strong>
 							</div>
 						</div>
 					</div>
@@ -1455,6 +1473,37 @@
 				el.textContent = isTouchDevice ? "Tap the QR code or visit" : "Click the QR code or visit";
 			})();
 
+			(function setupPosterVideos() {
+				document.querySelectorAll(".short-embed--poster").forEach(function (wrap) {
+					function load() {
+						const src = wrap.getAttribute("data-video-src");
+						if (!src) return;
+						const iframe = document.createElement("iframe");
+						iframe.src = src;
+						iframe.title = wrap.getAttribute("data-video-title") || "";
+						iframe.setAttribute("allowfullscreen", "true");
+						iframe.setAttribute(
+							"allow",
+							"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+						);
+						iframe.style.position = "absolute";
+						iframe.style.inset = "0";
+						iframe.style.width = "100%";
+						iframe.style.height = "100%";
+						iframe.style.border = "0";
+						wrap.innerHTML = "";
+						wrap.appendChild(iframe);
+					}
+					wrap.addEventListener("click", load);
+					wrap.addEventListener("keydown", function (e) {
+						if (e.key === "Enter" || e.key === " ") {
+							e.preventDefault();
+							load();
+						}
+					});
+				});
+			})();
+
 			(function setupOutAboutSlider() {
 				const slider = document.getElementById("outAboutSlider");
 				const track = document.getElementById("outAboutTrack");
@@ -1478,11 +1527,6 @@
 					return clone;
 				}
 
-				// Clone the last two items to the front and the first two to the
-				// back, so stepping past either end reveals a seamless
-				// continuation. Once that transition finishes, we silently jump
-				// back to the equivalent real position (no animation), so the
-				// clone supply never runs out — it just feels like an endless tape.
 				realItems
 					.slice(totalReal - visibleCount)
 					.reverse()
@@ -1526,8 +1570,6 @@
 					track.style.transition = animate ? "" : "none";
 					track.style.transform = "translateX(-" + currentIndex * step + "px)";
 					if (!animate) {
-						// Force a reflow so the transition-less jump actually takes
-						// effect before we hand control back.
 						void track.offsetWidth;
 						track.style.transition = "";
 					}
@@ -1644,8 +1686,6 @@
 						iframe.style.aspectRatio = aspect;
 						mediaEl.appendChild(iframe);
 
-						// Portrait videos (e.g. Facebook) shouldn't stretch to the same
-						// width as a landscape YouTube embed — keep the modal narrow.
 						const parts = aspect.split("/").map(Number);
 						if (parts.length === 2 && parts[0] < parts[1]) {
 							contentEl.classList.add("lightbox-content--narrow");
@@ -1673,7 +1713,6 @@
 					overlay.classList.remove("is-open");
 					overlay.setAttribute("aria-hidden", "true");
 					document.body.style.overflow = "";
-					// Clear the media so any playing video/audio actually stops.
 					mediaEl.innerHTML = "";
 					if (lastFocused && typeof lastFocused.focus === "function") {
 						lastFocused.focus();
@@ -1715,14 +1754,9 @@
 				const RESET_DELAY_MS = 20000;
 				const MAX_AMOUNT_DOLLARS = 10000;
 
-				// Where your Pi lives once DNS + Caddy are set up (see README Part 5),
-				// vs. your local dev server while testing (README Part 1 / the .env
-				// CANDIDATE_A_ALLOWED_ORIGINS local entry).
 				const isLocal = ["127.0.0.1", "localhost"].includes(window.location.hostname);
 				const BACKEND_BASE_URL = isLocal ? "http://127.0.0.1:7070" : "https://api.votejenniferray.com";
 
-				// Must match one of the route names registered in DonationServer.java's
-				// CANDIDATES map ("candidate-a" or "candidate-b").
 				const CANDIDATE_PATH = "/api/candidate-a/create-payment-intent";
 				const REQUEST_TIMEOUT_MS = 4000;
 
