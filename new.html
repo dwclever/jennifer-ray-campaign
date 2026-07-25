@@ -1104,6 +1104,13 @@
 			});
 
 			(function setupDonateHandler() {
+				// Publishable key for this candidate's Stripe account (safe to expose
+				// client-side — it's not the secret key). Not currently used by the
+				// redirect-to-Checkout flow below, but kept here for reference / in
+				// case an embedded Stripe Elements flow is wired back in later.
+				const STRIPE_PUBLISHABLE_KEY =
+					"pk_test_51TwSeBRw28WqHOPyUBbMjTasmY6xkimfW6qmufkid8ay2IDIoOQDoGxNtoXDP2F8k7WtY0F9QVBRk4ebejcQrqo300kB28IACs";
+
 				// Where your Pi lives once DNS + Caddy are set up (see README Part 5),
 				// vs. your local dev server while testing (README Part 1 / the .env
 				// CANDIDATE_A_ALLOWED_ORIGINS local entry).
