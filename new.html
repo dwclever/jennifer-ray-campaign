@@ -665,62 +665,73 @@
 						<div class="card form-panel h-100">
 							<div class="card-body p-4 p-lg-5">
 								<h3 class="h5 fw-bold text-navy text-uppercase mb-4 text-center">Donate by Card</h3>
-								<div class="row row-cols-2 g-2 mb-3">
-									<div class="col">
-										<a
-											href="https://buy.stripe.com/REPLACE_WITH_25_LINK"
-											target="_blank"
-											rel="noopener"
-											class="btn btn-navy-outline w-100"
-											>$25</a
-										>
+
+								<div id="donateStep1">
+									<div class="row row-cols-2 g-2 mb-3">
+										<div class="col">
+											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="25">
+												$25
+											</button>
+										</div>
+										<div class="col">
+											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="50">
+												$50
+											</button>
+										</div>
+										<div class="col">
+											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="100">
+												$100
+											</button>
+										</div>
+										<div class="col">
+											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="250">
+												$250
+											</button>
+										</div>
 									</div>
-									<div class="col">
-										<a
-											href="https://buy.stripe.com/REPLACE_WITH_50_LINK"
-											target="_blank"
-											rel="noopener"
-											class="btn btn-navy-outline w-100"
-											>$50</a
-										>
+									<div class="mb-3">
+										<label for="donateAmount" class="form-label fw-semibold">Custom Amount ($)</label>
+										<input
+											type="number"
+											class="form-control"
+											id="donateAmount"
+											min="1"
+											max="10000"
+											step="1"
+											placeholder="25"
+										/>
 									</div>
-									<div class="col">
-										<a
-											href="https://buy.stripe.com/REPLACE_WITH_100_LINK"
-											target="_blank"
-											rel="noopener"
-											class="btn btn-navy-outline w-100"
-											>$100</a
-										>
+									<div class="mb-3">
+										<label for="donateName" class="form-label fw-semibold">Your Name (optional)</label>
+										<input type="text" class="form-control" id="donateName" placeholder="Jane Smith" />
 									</div>
-									<div class="col">
-										<a
-											href="https://buy.stripe.com/REPLACE_WITH_250_LINK"
-											target="_blank"
-											rel="noopener"
-											class="btn btn-navy-outline w-100"
-											>$250</a
-										>
+									<button
+										id="donateSubmitBtn"
+										class="btn btn-red w-100"
+										data-fallback-url="https://donate.stripe.com/test_3cI3cxfFf3EAbnu45y53O00"
+									>
+										<i class="fas fa-lock me-2"></i>Donate
+									</button>
+									<p class="small text-muted mt-3 mb-0 text-center">Secure checkout powered by Stripe.</p>
+								</div>
+
+								<div id="donateStep2" class="d-none">
+									<div id="payment-element" class="mb-3"></div>
+									<button id="donateConfirmBtn" class="btn btn-red w-100">
+										<i class="fas fa-lock me-2"></i><span id="donateConfirmBtnLabel">Pay</span>
+									</button>
+									<div id="donatePaymentMessage" class="small text-danger mt-2 text-center"></div>
+									<div class="text-center mt-2">
+										<button type="button" id="donateChangeAmountBtn" class="btn btn-link btn-sm p-0 text-muted">
+											Change amount
+										</button>
 									</div>
 								</div>
-								<div class="mb-3">
-									<label for="donateAmount" class="form-label fw-semibold">Custom Amount ($)</label>
-									<input type="number" class="form-control" id="donateAmount" min="1" step="1" placeholder="25" />
+
+								<div id="donateSuccess" class="d-none text-center py-4">
+									<i class="fas fa-circle-check text-success mb-2" style="font-size: 2rem"></i>
+									<p class="fw-bold text-navy mb-0">Thank you for your donation!</p>
 								</div>
-								<div class="mb-3">
-									<label for="donateName" class="form-label fw-semibold">Your Name (optional)</label>
-									<input type="text" class="form-control" id="donateName" placeholder="Jane Smith" />
-								</div>
-								<button
-									id="donateSubmitBtn"
-									class="btn btn-red w-100"
-									data-fallback-url="https://buy.stripe.com/REPLACE_WITH_CUSTOM_AMOUNT_LINK"
-								>
-									<i class="fas fa-lock me-2"></i>Donate a Custom Amount
-								</button>
-								<p class="small text-muted mt-3 mb-0 text-center">
-									You'll be taken to Stripe's secure checkout to complete your donation by debit or credit card.
-								</p>
 							</div>
 						</div>
 					</div>
@@ -1104,12 +1115,10 @@
 			});
 
 			(function setupDonateHandler() {
-				// Publishable key for this candidate's Stripe account (safe to expose
-				// client-side — it's not the secret key). Not currently used by the
-				// redirect-to-Checkout flow below, but kept here for reference / in
-				// case an embedded Stripe Elements flow is wired back in later.
 				const STRIPE_PUBLISHABLE_KEY =
 					"pk_test_51TwSeBRw28WqHOPyUBbMjTasmY6xkimfW6qmufkid8ay2IDIoOQDoGxNtoXDP2F8k7WtY0F9QVBRk4ebejcQrqo300kB28IACs";
+				const RESET_DELAY_MS = 20000;
+				const MAX_AMOUNT_DOLLARS = 10000;
 
 				// Where your Pi lives once DNS + Caddy are set up (see README Part 5),
 				// vs. your local dev server while testing (README Part 1 / the .env
@@ -1119,77 +1128,200 @@
 
 				// Must match one of the route names registered in DonationServer.java's
 				// CANDIDATES map ("candidate-a" or "candidate-b").
-				const CANDIDATE_ID = "candidate-a";
-
-				// How long we're willing to wait for the Pi before giving up and using
-				// the fallback link instead.
-				const REQUEST_TIMEOUT_MS = 2500;
+				const CANDIDATE_PATH = "/api/candidate-a/create-payment-intent";
+				const REQUEST_TIMEOUT_MS = 4000;
 
 				const amountInput = document.getElementById("donateAmount");
 				const nameInput = document.getElementById("donateName");
 				const submitBtn = document.getElementById("donateSubmitBtn");
+				const step1 = document.getElementById("donateStep1");
+				const step2 = document.getElementById("donateStep2");
+				const successEl = document.getElementById("donateSuccess");
+				const confirmBtn = document.getElementById("donateConfirmBtn");
+				const confirmBtnLabel = document.getElementById("donateConfirmBtnLabel");
+				const messageEl = document.getElementById("donatePaymentMessage");
+				const paymentElementMount = document.getElementById("payment-element");
+				const changeAmountBtn = document.getElementById("donateChangeAmountBtn");
 
-				if (!submitBtn || !amountInput) return;
+				if (!amountInput || !submitBtn || !step1 || !step2) {
+					return;
+				}
 
-				async function tryBackendCheckout(amountCents, donorName) {
+				amountInput.addEventListener("keydown", function (e) {
+					if (e.key === "-" || e.key === "+" || e.key === "e" || e.key === "E") {
+						e.preventDefault();
+					}
+				});
+
+				amountInput.addEventListener("input", function () {
+					if (amountInput.value === "") return;
+					const val = parseFloat(amountInput.value);
+					if (isNaN(val)) return;
+					if (val < 0) {
+						amountInput.value = 0;
+					} else if (val > MAX_AMOUNT_DOLLARS) {
+						amountInput.value = MAX_AMOUNT_DOLLARS;
+					}
+				});
+
+				let stripe;
+				let elements;
+
+				function goToFallback() {
+					const fallbackUrl = submitBtn.getAttribute("data-fallback-url");
+					if (fallbackUrl) {
+						window.location.href = fallbackUrl;
+					}
+				}
+
+				function loadStripeJs() {
+					return new Promise(function (resolve, reject) {
+						if (window.Stripe) {
+							resolve();
+							return;
+						}
+						const script = document.createElement("script");
+						script.src = "https://js.stripe.com/v3/";
+						script.onload = resolve;
+						script.onerror = reject;
+						document.head.appendChild(script);
+					});
+				}
+
+				function cancelPayment() {
+					if (messageEl) messageEl.textContent = "";
+					if (paymentElementMount) paymentElementMount.innerHTML = "";
+					if (confirmBtn) confirmBtn.disabled = false;
+					stripe = undefined;
+					elements = undefined;
+					step2.classList.add("d-none");
+					step1.classList.remove("d-none");
+				}
+
+				if (changeAmountBtn) {
+					changeAmountBtn.addEventListener("click", cancelPayment);
+				}
+
+				function resetForm() {
+					amountInput.value = "";
+					if (nameInput) nameInput.value = "";
+					if (messageEl) messageEl.textContent = "";
+					if (paymentElementMount) paymentElementMount.innerHTML = "";
+					if (confirmBtn) confirmBtn.disabled = false;
+					stripe = undefined;
+					elements = undefined;
+					successEl.classList.add("d-none");
+					step2.classList.add("d-none");
+					step1.classList.remove("d-none");
+				}
+
+				async function startPayment(dollars) {
+					if (isNaN(dollars) || dollars < 1) {
+						amountInput.focus();
+						return;
+					}
+					if (dollars > MAX_AMOUNT_DOLLARS) {
+						dollars = MAX_AMOUNT_DOLLARS;
+					}
+					amountInput.value = dollars;
+
+					if (!step2.classList.contains("d-none")) {
+						cancelPayment();
+					}
+
+					const amountCents = Math.round(dollars * 100);
+
+					const originalHtml = submitBtn.innerHTML;
+					submitBtn.disabled = true;
+					submitBtn.innerHTML = "Loading...";
+
 					const controller = new AbortController();
 					const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
 					try {
-						const response = await fetch(`${BACKEND_BASE_URL}/api/${CANDIDATE_ID}/create-checkout-session`, {
+						await loadStripeJs();
+
+						const response = await fetch(BACKEND_BASE_URL + CANDIDATE_PATH, {
 							method: "POST",
 							headers: { "Content-Type": "application/json" },
-							body: JSON.stringify({ amountCents, donorName }),
+							body: JSON.stringify({
+								amountCents: amountCents,
+								donorName: nameInput ? nameInput.value : undefined,
+							}),
 							signal: controller.signal,
 						});
 
-						if (!response.ok) return null;
+						clearTimeout(timeoutId);
+
+						if (!response.ok) {
+							throw new Error("Backend responded with " + response.status);
+						}
 
 						const data = await response.json();
-						return data.checkoutUrl || null;
-					} catch (error) {
-						// Timed out, offline, DNS failure, whatever — we just fall back below.
-						return null;
-					} finally {
+						if (!data.clientSecret) {
+							throw new Error("No clientSecret in response");
+						}
+
+						stripe = window.Stripe(STRIPE_PUBLISHABLE_KEY);
+						elements = stripe.elements({ clientSecret: data.clientSecret });
+						const paymentElement = elements.create("payment");
+						paymentElement.mount("#payment-element");
+
+						confirmBtnLabel.textContent = "Pay $" + dollars.toFixed(2);
+						step1.classList.add("d-none");
+						step2.classList.remove("d-none");
+					} catch (err) {
 						clearTimeout(timeoutId);
+						console.warn("Donation backend unavailable, falling back to static link:", err);
+						goToFallback();
+					} finally {
+						submitBtn.disabled = false;
+						submitBtn.innerHTML = originalHtml;
 					}
 				}
 
-				submitBtn.addEventListener("click", async function (e) {
-					e.preventDefault();
-
-					const dollars = parseFloat(amountInput.value);
-					if (!dollars || dollars <= 0) {
-						amountInput.focus();
-						return;
-					}
-
-					const amountCents = Math.round(dollars * 100);
-					const donorName = nameInput ? nameInput.value.trim() : "";
-
-					const originalHtml = submitBtn.innerHTML;
-					submitBtn.disabled = true;
-					submitBtn.innerHTML = "Connecting...";
-
-					const checkoutUrl = await tryBackendCheckout(amountCents, donorName);
-
-					if (checkoutUrl) {
-						// Success path: send the donor's browser straight to Stripe's
-						// real checkout page for this exact amount.
-						window.location.href = checkoutUrl;
-						return;
-					}
-
-					// Fallback path: Pi didn't answer in time (or is offline) — send the
-					// donor to a pre-created static Stripe Payment Link instead.
-					submitBtn.disabled = false;
-					submitBtn.innerHTML = originalHtml;
-
-					const fallbackUrl = submitBtn.getAttribute("data-fallback-url");
-					if (fallbackUrl) {
-						window.open(fallbackUrl, "_blank", "noopener");
-					}
+				document.querySelectorAll(".preset-amount-btn").forEach(function (btn) {
+					btn.addEventListener("click", function () {
+						startPayment(parseFloat(btn.getAttribute("data-amount")));
+					});
 				});
+
+				submitBtn.addEventListener("click", function (e) {
+					e.preventDefault();
+					startPayment(parseFloat(amountInput.value));
+				});
+
+				if (confirmBtn) {
+					confirmBtn.addEventListener("click", async function (e) {
+						e.preventDefault();
+						if (!stripe || !elements) return;
+
+						confirmBtn.disabled = true;
+						messageEl.textContent = "";
+
+						const { error, paymentIntent } = await stripe.confirmPayment({
+							elements: elements,
+							redirect: "if_required",
+							confirmParams: {
+								return_url: window.location.href,
+							},
+						});
+
+						if (error) {
+							messageEl.textContent = error.message || "Payment failed. Please check your card details and try again.";
+							confirmBtn.disabled = false;
+							return;
+						}
+
+						if (paymentIntent && paymentIntent.status === "succeeded") {
+							step2.classList.add("d-none");
+							successEl.classList.remove("d-none");
+							setTimeout(resetForm, RESET_DELAY_MS);
+						} else {
+							confirmBtn.disabled = false;
+						}
+					});
+				}
 			})();
 		</script>
 	</body>
