@@ -315,13 +315,26 @@ h2 {
 /* Hero */
 .hero-section {
 	position: relative;
-	/* Placeholder background — swap this for a real photo/graphic later.
-	   Kept as a plain CSS gradient (no external image) so there's nothing
-	   to break/hotlink; just replace with a background-image: url(...) when ready. */
-	background: linear-gradient(160deg, #eaf4fc 0%, #cfe8f7 55%, #bfe0f5 100%);
+	background-image: url("../images/new/courthouse_w_Jennifer.JPG");
 	background-size: cover;
 	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 640px;
+	display: flex;
+	align-items: center;
 	padding: 4.5rem 0;
+}
+
+.hero-section::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(90deg, rgba(8, 16, 38, 0.72) 0%, rgba(8, 16, 38, 0.45) 55%, rgba(8, 16, 38, 0.15) 100%);
+}
+
+.hero-inner {
+	position: relative;
+	z-index: 1;
 }
 
 .hero-headline {
@@ -329,78 +342,27 @@ h2 {
 	font-weight: 800;
 	line-height: 1.15;
 	text-transform: uppercase;
-	text-shadow: 0 2px 12px rgba(255, 255, 255, 0.6);
+	color: #fff;
+	text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-headline .accent-line {
-	color: var(--red);
+	color: #ff6b6b;
 }
 
-.hero-photo {
-	border-radius: 0.5rem;
-	box-shadow: 0 20px 40px rgba(22, 38, 92, 0.35);
-	border: 4px solid #fff;
-}
-
-.hero-photo-wrap {
-	position: relative;
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-	min-height: 380px;
-}
-
-.hero-photo-wrap::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	bottom: -14px;
-	transform: translateX(-50%);
-	width: calc(92% + 20px);
-	max-width: 480px;
-	aspect-ratio: 1 / 1;
-	border-radius: 50%;
-	border: 3px solid var(--navy);
-	z-index: 2;
-	pointer-events: none;
-}
-
-.hero-photo-clip {
-	position: relative;
-	z-index: 1;
-	width: 92%;
-	max-width: 460px;
-	aspect-ratio: 1 / 1;
-	border-radius: 50%;
-	overflow: hidden;
-	background: var(--navy);
-	box-shadow: 0 18px 36px rgba(22, 38, 92, 0.25);
-}
-
-.hero-yard-sign {
-	display: block;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: 50% 15%;
+.hero-subtext {
+	color: #fff;
+	text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
 }
 
 @media (max-width: 991px) {
-	.hero-photo-mobile {
-		width: 100%;
-		max-width: 500px;
+	.hero-section {
+		min-height: 480px;
+		padding: 3rem 0;
 	}
 
-	.hero-photo-wrap {
-		min-height: 300px;
-	}
-
-	.hero-photo-wrap::after {
-		max-width: 300px;
-	}
-
-	.hero-photo-clip {
-		max-width: 300px;
+	.hero-section::before {
+		background: linear-gradient(180deg, rgba(8, 16, 38, 0.35) 0%, rgba(8, 16, 38, 0.72) 65%, rgba(8, 16, 38, 0.8) 100%);
 	}
 }
 
