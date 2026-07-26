@@ -141,6 +141,11 @@ h2 {
 	color: #fff;
 }
 
+.preset-amount-btn.active {
+	background-color: var(--navy);
+	color: #fff;
+}
+
 /* Nav */
 .site-nav {
 	background: #fff;
@@ -1576,6 +1581,11 @@ h2 {
 
 .char-counter {
 	font-size: 0.8rem;
+}
+
+.donate-thankyou-modal {
+	border-top: 4px solid var(--navy);
+	border-radius: 0.5rem;
 }
 
 .btn-red:disabled,

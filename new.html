@@ -856,54 +856,192 @@
 							<div class="card-body p-4 p-lg-5">
 								<h3 class="h5 fw-bold text-navy text-uppercase mb-4 text-center">Donate by Card</h3>
 
-								<div id="donateStep1">
-									<div class="row row-cols-2 g-2 mb-3">
-										<div class="col">
-											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="25">
-												$25
-											</button>
+								<form id="donateStep1" novalidate>
+									<div id="donateAmountView">
+										<div class="row row-cols-3 g-2 mb-3">
+											<div class="col">
+												<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="25">
+													$25
+												</button>
+											</div>
+											<div class="col">
+												<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="50">
+													$50
+												</button>
+											</div>
+											<div class="col">
+												<button
+													type="button"
+													class="btn btn-navy-outline w-100 preset-amount-btn"
+													data-amount="100"
+												>
+													$100
+												</button>
+											</div>
+											<div class="col">
+												<button
+													type="button"
+													class="btn btn-navy-outline w-100 preset-amount-btn"
+													data-amount="250"
+												>
+													$250
+												</button>
+											</div>
+											<div class="col">
+												<button
+													type="button"
+													class="btn btn-navy-outline w-100 preset-amount-btn"
+													data-amount="500"
+												>
+													$500
+												</button>
+											</div>
 										</div>
-										<div class="col">
-											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="50">
-												$50
-											</button>
+										<div class="mb-3">
+											<label for="donateAmount" class="form-label fw-semibold">Custom Amount ($)</label>
+											<input
+												type="number"
+												class="form-control"
+												id="donateAmount"
+												min="1"
+												max="10000"
+												step="1"
+												inputmode="numeric"
+												placeholder="25"
+											/>
 										</div>
-										<div class="col">
-											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="100">
-												$100
-											</button>
-										</div>
-										<div class="col">
-											<button type="button" class="btn btn-navy-outline w-100 preset-amount-btn" data-amount="250">
-												$250
-											</button>
-										</div>
+										<div id="donateAmountError" class="small text-danger mb-3 d-none"></div>
+
+										<button type="button" id="donateAmountSubmitBtn" class="btn btn-red w-100">
+											<i class="fas fa-lock me-2"></i>Donate
+										</button>
+										<p class="small text-muted mt-3 mb-0 text-center">Secure checkout powered by Stripe.</p>
 									</div>
-									<div class="mb-3">
-										<label for="donateAmount" class="form-label fw-semibold">Custom Amount ($)</label>
-										<input
-											type="number"
-											class="form-control"
-											id="donateAmount"
-											min="1"
-											max="10000"
-											step="1"
-											placeholder="25"
-										/>
+
+									<div id="donateDetailsView" class="d-none">
+										<hr class="my-4" />
+										<button type="button" id="donateBackToAmountBtn" class="btn btn-link btn-sm p-0 text-muted mb-3">
+											<i class="fas fa-chevron-up me-1"></i>Hide details
+										</button>
+										<p class="fw-semibold text-navy mb-3" id="donateDetailsAmountLine"></p>
+										<p class="small text-muted mb-3">
+											Georgia law requires campaigns to collect the following information for every contribution.
+										</p>
+
+										<div class="mb-3">
+											<label for="donateName" class="form-label fw-semibold"
+												>Full Name <span class="text-danger">*</span></label
+											>
+											<input type="text" class="form-control" id="donateName" placeholder="Jane Smith" required />
+										</div>
+										<div class="mb-3">
+											<label for="donateAddress" class="form-label fw-semibold"
+												>Street Address <span class="text-danger">*</span></label
+											>
+											<input type="text" class="form-control" id="donateAddress" placeholder="123 Main St" required />
+										</div>
+										<div class="row g-2 mb-3">
+											<div class="col-12 col-sm-5">
+												<label for="donateCity" class="form-label fw-semibold"
+													>City <span class="text-danger">*</span></label
+												>
+												<input type="text" class="form-control" id="donateCity" placeholder="Eatonton" required />
+											</div>
+											<div class="col-6 col-sm-3">
+												<label for="donateState" class="form-label fw-semibold"
+													>State <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="donateState"
+													placeholder="GA"
+													maxlength="2"
+													required
+												/>
+											</div>
+											<div class="col-6 col-sm-4">
+												<label for="donateZip" class="form-label fw-semibold"
+													>ZIP <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="donateZip"
+													placeholder="31024"
+													inputmode="numeric"
+													maxlength="10"
+													required
+												/>
+											</div>
+										</div>
+										<div class="mb-3">
+											<label for="donateEmail" class="form-label fw-semibold"
+												>Email Address <span class="text-danger">*</span></label
+											>
+											<input
+												type="email"
+												class="form-control"
+												id="donateEmail"
+												placeholder="jane@example.com"
+												required
+											/>
+										</div>
+										<div class="mb-3">
+											<label for="donatePhone" class="form-label fw-semibold"
+												>Phone Number <span class="text-danger">*</span></label
+											>
+											<input type="tel" class="form-control" id="donatePhone" placeholder="(706) 555-0100" required />
+										</div>
+										<div class="row g-2 mb-3">
+											<div class="col-sm-6">
+												<label for="donateOccupation" class="form-label fw-semibold"
+													>Occupation <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="donateOccupation"
+													placeholder="Teacher"
+													required
+												/>
+											</div>
+											<div class="col-sm-6">
+												<label for="donateEmployer" class="form-label fw-semibold"
+													>Employer <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													class="form-control"
+													id="donateEmployer"
+													placeholder="Self-Employed / Retired / Company name"
+													required
+												/>
+											</div>
+										</div>
+
+										<div class="form-check mb-3">
+											<input class="form-check-input" type="checkbox" id="donateCertify" required />
+											<label class="form-check-label small" for="donateCertify">
+												I certify that this contribution is made from my own personal funds (not those of another
+												person or entity, and not in the name of another), that I am a U.S. citizen or lawfully
+												admitted permanent resident, and that this contribution does not exceed the limits set by
+												Georgia law.
+											</label>
+										</div>
+										<div id="donateFormError" class="small text-danger mb-3 d-none"></div>
+
+										<button
+											type="button"
+											id="donateSubmitBtn"
+											class="btn btn-red w-100"
+											data-fallback-url="https://donate.stripe.com/test_3cI3cxfFf3EAbnu45y53O00"
+										>
+											<i class="fas fa-lock me-2"></i><span id="donateSubmitBtnLabel">Donate</span>
+										</button>
+										<p class="small text-muted mt-3 mb-0 text-center">Secure checkout powered by Stripe.</p>
 									</div>
-									<div class="mb-3">
-										<label for="donateName" class="form-label fw-semibold">Your Name (optional)</label>
-										<input type="text" class="form-control" id="donateName" placeholder="Jane Smith" />
-									</div>
-									<button
-										id="donateSubmitBtn"
-										class="btn btn-red w-100"
-										data-fallback-url="https://donate.stripe.com/test_3cI3cxfFf3EAbnu45y53O00"
-									>
-										<i class="fas fa-lock me-2"></i>Donate
-									</button>
-									<p class="small text-muted mt-3 mb-0 text-center">Secure checkout powered by Stripe.</p>
-								</div>
+								</form>
 
 								<div id="donateStep2" class="d-none">
 									<div id="payment-element" class="mb-3"></div>
@@ -916,11 +1054,6 @@
 											Change amount
 										</button>
 									</div>
-								</div>
-
-								<div id="donateSuccess" class="d-none text-center py-4">
-									<i class="fas fa-circle-check text-success mb-2" style="font-size: 2rem"></i>
-									<p class="fw-bold text-navy mb-0">Thank you for your donation!</p>
 								</div>
 							</div>
 						</div>
@@ -956,6 +1089,24 @@
 				</div>
 			</div>
 		</section>
+
+		<div class="modal fade" id="donateThankYouModal" tabindex="-1" aria-labelledby="donateThankYouLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content donate-thankyou-modal">
+					<div class="modal-body text-center p-4 p-lg-5">
+						<i class="fas fa-circle-check text-success mb-3" style="font-size: 3rem"></i>
+						<h3 class="fw-bold text-navy mb-2" id="donateThankYouLabel">Thank You!</h3>
+						<p class="mb-1">Your contribution to Jennifer Ray for Putnam County Commission is confirmed.</p>
+						<p class="mb-4" id="donateThankYouAmountLine"></p>
+						<p class="small text-muted mb-4">
+							A receipt has been emailed to you. It's contributors like you who make this campaign possible &mdash; thank you
+							for standing with Jennifer.
+						</p>
+						<button type="button" class="btn btn-red px-4" data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<section class="py-5 bg-ivory" id="dates">
 			<div class="container px-4">
@@ -2047,47 +2198,188 @@
 			(function setupDonateHandler() {
 				const STRIPE_PUBLISHABLE_KEY =
 					"pk_test_51TxRGGLcZS4vLFb9egveZwFNENJevqJfSCxzC8y0GocZnnTSbCwXkq1B43ZJNfiPFA8raiB4YcS7VR5PcHruj00k005k6Tyyby";
-				const RESET_DELAY_MS = 20000;
 				const MAX_AMOUNT_DOLLARS = 10000;
 
 				const isLocal = ["127.0.0.1", "localhost"].includes(window.location.hostname);
 				const BACKEND_BASE_URL = isLocal ? "http://127.0.0.1:7070" : "https://api.votejenniferray.com";
 
-				const CANDIDATE_PATH = "/api/candidate-a/create-payment-intent";
+				const CANDIDATE_PATH = "/api/jennifer/create-payment-intent";
 				const REQUEST_TIMEOUT_MS = 4000;
 
 				const amountInput = document.getElementById("donateAmount");
 				const nameInput = document.getElementById("donateName");
+				const addressInput = document.getElementById("donateAddress");
+				const cityInput = document.getElementById("donateCity");
+				const stateInput = document.getElementById("donateState");
+				const zipInput = document.getElementById("donateZip");
+				const emailInput = document.getElementById("donateEmail");
+				const phoneInput = document.getElementById("donatePhone");
+				const occupationInput = document.getElementById("donateOccupation");
+				const employerInput = document.getElementById("donateEmployer");
+				const certifyInput = document.getElementById("donateCertify");
+				const formErrorEl = document.getElementById("donateFormError");
+				const amountErrorEl = document.getElementById("donateAmountError");
+				const amountSubmitBtn = document.getElementById("donateAmountSubmitBtn");
+				const detailsView = document.getElementById("donateDetailsView");
+				const backToAmountBtn = document.getElementById("donateBackToAmountBtn");
+				const detailsAmountLine = document.getElementById("donateDetailsAmountLine");
 				const submitBtn = document.getElementById("donateSubmitBtn");
+				const submitBtnLabel = document.getElementById("donateSubmitBtnLabel");
 				const step1 = document.getElementById("donateStep1");
 				const step2 = document.getElementById("donateStep2");
-				const successEl = document.getElementById("donateSuccess");
 				const confirmBtn = document.getElementById("donateConfirmBtn");
 				const confirmBtnLabel = document.getElementById("donateConfirmBtnLabel");
 				const messageEl = document.getElementById("donatePaymentMessage");
 				const paymentElementMount = document.getElementById("payment-element");
 				const changeAmountBtn = document.getElementById("donateChangeAmountBtn");
+				const thankYouModalEl = document.getElementById("donateThankYouModal");
+				const thankYouAmountLine = document.getElementById("donateThankYouAmountLine");
+				const thankYouModal = thankYouModalEl && window.bootstrap ? new bootstrap.Modal(thankYouModalEl) : null;
 
 				if (!amountInput || !submitBtn || !step1 || !step2) {
 					return;
 				}
 
+				function getContributorInfo() {
+					if (formErrorEl) {
+						formErrorEl.classList.add("d-none");
+						formErrorEl.textContent = "";
+					}
+
+					if (typeof step1.reportValidity === "function" && !step1.reportValidity()) {
+						return null;
+					}
+
+					if (certifyInput && !certifyInput.checked) {
+						if (formErrorEl) {
+							formErrorEl.textContent = "Please check the certification box to continue.";
+							formErrorEl.classList.remove("d-none");
+						}
+						certifyInput.focus();
+						return null;
+					}
+
+					return {
+						donorName: nameInput ? nameInput.value.trim() : "",
+						address: addressInput ? addressInput.value.trim() : "",
+						city: cityInput ? cityInput.value.trim() : "",
+						state: stateInput ? stateInput.value.trim().toUpperCase() : "",
+						zip: zipInput ? zipInput.value.trim() : "",
+						email: emailInput ? emailInput.value.trim() : "",
+						phone: phoneInput ? phoneInput.value.trim() : "",
+						occupation: occupationInput ? occupationInput.value.trim() : "",
+						employer: employerInput ? employerInput.value.trim() : "",
+					};
+				}
+
+				function collapseDetails() {
+					if (detailsView) detailsView.classList.add("d-none");
+				}
+
+				function updateSubmitLabel(dollars) {
+					if (submitBtnLabel) {
+						submitBtnLabel.textContent = "Donate $" + dollars.toFixed(2);
+					}
+				}
+
+				function revealDetails(dollars) {
+					if (detailsAmountLine) {
+						detailsAmountLine.textContent = "Contributing $" + dollars.toFixed(2);
+					}
+					updateSubmitLabel(dollars);
+					if (detailsView) detailsView.classList.remove("d-none");
+				}
+
+				function setActivePreset(amount) {
+					document.querySelectorAll(".preset-amount-btn").forEach(function (btn) {
+						btn.classList.toggle("active", parseFloat(btn.getAttribute("data-amount")) === amount);
+					});
+				}
+
+				function clearAmountError() {
+					if (amountErrorEl) {
+						amountErrorEl.textContent = "";
+						amountErrorEl.classList.add("d-none");
+					}
+				}
+
+				function confirmAmount(dollars) {
+					if (isNaN(dollars) || dollars < 1) {
+						if (amountErrorEl) {
+							amountErrorEl.textContent = "Please choose or enter a contribution amount of at least $1.";
+							amountErrorEl.classList.remove("d-none");
+						}
+						amountInput.focus();
+						return false;
+					}
+					if (dollars > MAX_AMOUNT_DOLLARS) {
+						dollars = MAX_AMOUNT_DOLLARS;
+					}
+					amountInput.value = dollars;
+					clearAmountError();
+					revealDetails(dollars);
+					return true;
+				}
+
+				// Whole-dollar amounts only: block "-", "+", "e"/"E" (scientific
+				// notation), and "." so a donor can never type something like 0.12
+				// in the first place.
 				amountInput.addEventListener("keydown", function (e) {
-					if (e.key === "-" || e.key === "+" || e.key === "e" || e.key === "E") {
+					if (["-", "+", "e", "E", "."].includes(e.key)) {
 						e.preventDefault();
 					}
 				});
 
 				amountInput.addEventListener("input", function () {
+					setActivePreset(NaN);
+					clearAmountError();
 					if (amountInput.value === "") return;
-					const val = parseFloat(amountInput.value);
+					// Belt-and-suspenders: strip any decimal that sneaks in via paste
+					// (e.g. pasting "12.34") and clamp to the allowed range.
+					let val = Math.trunc(Number(amountInput.value));
 					if (isNaN(val)) return;
-					if (val < 0) {
-						amountInput.value = 0;
-					} else if (val > MAX_AMOUNT_DOLLARS) {
-						amountInput.value = MAX_AMOUNT_DOLLARS;
+					if (val < 0) val = 0;
+					if (val > MAX_AMOUNT_DOLLARS) val = MAX_AMOUNT_DOLLARS;
+					amountInput.value = val;
+
+					// If the details form is already open, keep the "Contributing
+					// $X" line and the Donate button's amount in sync as the donor
+					// edits the amount, instead of requiring them to close and
+					// reopen the details section.
+					if (detailsView && !detailsView.classList.contains("d-none") && val >= 1) {
+						if (detailsAmountLine) {
+							detailsAmountLine.textContent = "Contributing $" + val.toFixed(2);
+						}
+						updateSubmitLabel(val);
 					}
 				});
+
+				amountInput.addEventListener("blur", function () {
+					// If the donor clears the custom amount and clicks away while
+					// the details form is open, collapse it back down rather than
+					// leaving a details form open with no amount behind it.
+					if (amountInput.value === "" && detailsView && !detailsView.classList.contains("d-none")) {
+						collapseDetails();
+					}
+				});
+
+				document.querySelectorAll(".preset-amount-btn").forEach(function (btn) {
+					btn.addEventListener("click", function () {
+						const amount = parseFloat(btn.getAttribute("data-amount"));
+						setActivePreset(amount);
+						confirmAmount(amount);
+					});
+				});
+
+				if (amountSubmitBtn) {
+					amountSubmitBtn.addEventListener("click", function () {
+						confirmAmount(parseFloat(amountInput.value));
+					});
+				}
+
+				if (backToAmountBtn) {
+					backToAmountBtn.addEventListener("click", collapseDetails);
+				}
 
 				let stripe;
 				let elements;
@@ -2128,19 +2420,23 @@
 				}
 
 				function resetForm() {
-					amountInput.value = "";
-					if (nameInput) nameInput.value = "";
+					step1.reset();
 					if (messageEl) messageEl.textContent = "";
+					if (formErrorEl) {
+						formErrorEl.textContent = "";
+						formErrorEl.classList.add("d-none");
+					}
 					if (paymentElementMount) paymentElementMount.innerHTML = "";
 					if (confirmBtn) confirmBtn.disabled = false;
 					stripe = undefined;
 					elements = undefined;
-					successEl.classList.add("d-none");
 					step2.classList.add("d-none");
 					step1.classList.remove("d-none");
+					setActivePreset(NaN);
+					collapseDetails();
 				}
 
-				async function startPayment(dollars) {
+				async function startPayment(dollars, contributor) {
 					if (isNaN(dollars) || dollars < 1) {
 						amountInput.focus();
 						return;
@@ -2171,7 +2467,15 @@
 							headers: { "Content-Type": "application/json" },
 							body: JSON.stringify({
 								amountCents: amountCents,
-								donorName: nameInput ? nameInput.value : undefined,
+								donorName: contributor.donorName,
+								address: contributor.address,
+								city: contributor.city,
+								state: contributor.state,
+								zip: contributor.zip,
+								email: contributor.email,
+								phone: contributor.phone,
+								occupation: contributor.occupation,
+								employer: contributor.employer,
 							}),
 							signal: controller.signal,
 						});
@@ -2205,15 +2509,13 @@
 					}
 				}
 
-				document.querySelectorAll(".preset-amount-btn").forEach(function (btn) {
-					btn.addEventListener("click", function () {
-						startPayment(parseFloat(btn.getAttribute("data-amount")));
-					});
-				});
-
 				submitBtn.addEventListener("click", function (e) {
 					e.preventDefault();
-					startPayment(parseFloat(amountInput.value));
+					const contributor = getContributorInfo();
+					if (!contributor) {
+						return;
+					}
+					startPayment(parseFloat(amountInput.value), contributor);
 				});
 
 				if (confirmBtn) {
@@ -2239,9 +2541,14 @@
 						}
 
 						if (paymentIntent && paymentIntent.status === "succeeded") {
-							step2.classList.add("d-none");
-							successEl.classList.remove("d-none");
-							setTimeout(resetForm, RESET_DELAY_MS);
+							const paidDollars = (paymentIntent.amount / 100).toFixed(2);
+							if (thankYouAmountLine) {
+								thankYouAmountLine.textContent = "Amount: $" + paidDollars;
+							}
+							resetForm();
+							if (thankYouModal) {
+								thankYouModal.show();
+							}
 						} else {
 							confirmBtn.disabled = false;
 						}
