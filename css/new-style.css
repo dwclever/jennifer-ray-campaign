@@ -1138,7 +1138,15 @@ h2 {
 	display: flex;
 	gap: 1.25rem;
 	transition: transform 0.4s ease;
-	align-items: stretch;
+	/* NOT align-items: stretch. This track is one continuous flex row -- every
+	   card, including ones currently scrolled off-screen or sitting in the
+	   clone buffer, stays in normal flow and only gets moved visually via
+	   transform. With "stretch", every item in the row is forced to match the
+	   height of the row's tallest item, so expanding one endorsement's "Read
+	   Full Endorsement" (even one that's off-screen) inflated every other
+	   card's height too -- which looked like an unrelated card had expanded
+	   on its own. flex-start makes each card size to its own content only. */
+	align-items: flex-start;
 }
 
 .out-about-item,
@@ -1184,6 +1192,12 @@ h2 {
 .out-about-control:hover {
 	background: var(--navy);
 	color: #fff;
+}
+
+.out-about-control:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+	pointer-events: none;
 }
 
 .out-about-control-prev,

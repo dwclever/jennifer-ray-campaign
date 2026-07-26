@@ -19,7 +19,7 @@
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
 			rel="stylesheet"
 		/>
-		<link href="css/new-style.css?v=9" rel="stylesheet" />
+		<link href="css/new-style.css?v=11" rel="stylesheet" />
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	<body>
@@ -1618,10 +1618,37 @@
 					clone.querySelectorAll("[id]").forEach(function (node) {
 						node.removeAttribute("id");
 					});
+					// A clone's collapse toggle still carries data-bs-target/aria-controls
+					// pointing at the ORIGINAL card's id (only the "id" attribute itself
+					// gets stripped above, not attributes that reference one). Bootstrap
+					// keeps aria-expanded in sync across every trigger that shares a
+					// target, so leaving these in place meant expanding the real card
+					// also flipped a clone's button to "Show Less" -- while the clone's
+					// own (now id-less, unreachable) collapse content never actually
+					// opened, since Bootstrap only toggles the real element. Stripping
+					// the collapse wiring entirely from clones prevents that cross-talk.
+					clone.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (btn) {
+						btn.removeAttribute("data-bs-toggle");
+						btn.removeAttribute("data-bs-target");
+						btn.removeAttribute("aria-controls");
+						btn.removeAttribute("aria-expanded");
+						btn.setAttribute("tabindex", "-1");
+					});
 					return clone;
 				}
 
-				let offset = visibleCount;
+				// Looping (default) uses the clone-buffer illusion below, which is
+				// great for static content like photos but breaks down for
+				// interactive content: a clone is a frozen snapshot taken once, at
+				// setup time, so if a real card's expand/collapse state changes
+				// later, swapping between the real element and its stale clone
+				// during a loop-wrap becomes visibly wrong (an expanded card
+				// appears to auto-collapse, or vice versa, as it crosses the seam).
+				// Endorsements has few enough cards that looping isn't worth that
+				// tradeoff, so it opts out via loop: false and just clamps at the
+				// ends instead.
+				const loop = options.loop !== false;
+				let offset = loop ? visibleCount : 0;
 				let startIndex = offset;
 				let endIndex = offset + (totalReal - visibleCount);
 				let currentIndex = startIndex;
@@ -1694,6 +1721,14 @@
 					});
 				}
 
+				// For a non-looping slider (no clone buffer to mask a wrap), disable
+				// the prev/next arrows at the ends instead of wrapping.
+				function updateNavButtons() {
+					if (loop) return;
+					prevBtn.disabled = currentIndex <= startIndex;
+					nextBtn.disabled = currentIndex >= endIndex;
+				}
+
 				function reposition(animate) {
 					if (paused) return;
 					if (!measure()) return;
@@ -1702,20 +1737,22 @@
 				}
 
 				function goTo(index) {
-					currentIndex = index;
+					currentIndex = loop ? index : Math.min(Math.max(index, startIndex), endIndex);
 					reposition(true);
+					updateNavButtons();
 				}
 
 				function rebuildForVisibleCount(newVisibleCount) {
 					visibleCount = newVisibleCount;
-					offset = visibleCount;
+					offset = loop ? visibleCount : 0;
 					startIndex = offset;
 					endIndex = offset + (totalReal - visibleCount);
-					buildClones(visibleCount);
+					if (loop) buildClones(visibleCount);
 					// Clamp currentIndex into the valid range for the new layout.
 					currentIndex = Math.min(Math.max(currentIndex, startIndex), endIndex);
 					buildDots();
 					reposition(false);
+					updateNavButtons();
 				}
 
 				// Only react to a transitionend that actually came from the track's
@@ -1726,6 +1763,7 @@
 				// spuriously re-trigger the loop-wrap correction below.
 				track.addEventListener("transitionend", function (e) {
 					if (e.target !== track || e.propertyName !== "transform") return;
+					if (!loop) return;
 					if (currentIndex > endIndex) {
 						currentIndex -= totalReal;
 						applyTransform(false);
@@ -1776,9 +1814,10 @@
 					reposition(false);
 				});
 
-				buildClones(visibleCount);
+				if (loop) buildClones(visibleCount);
 				buildDots();
 				reposition(false);
+				updateNavButtons();
 
 				let autoplayTimer = null;
 
@@ -1797,7 +1836,11 @@
 						if (options.shouldPauseAutoplay && options.shouldPauseAutoplay()) {
 							return;
 						}
-						goTo(currentIndex + 1);
+						if (!loop && currentIndex >= endIndex) {
+							goTo(startIndex);
+						} else {
+							goTo(currentIndex + 1);
+						}
 					}, autoplayDelayMs);
 				}
 
@@ -1872,6 +1915,7 @@
 					dotsId: "endorsementDots",
 					gapPx: 24,
 					autoplayDelayMs: 9000,
+					loop: false,
 					getVisibleCount: function () {
 						return window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
 					},
