@@ -331,6 +331,15 @@ h2 {
 	color: var(--red);
 }
 
+.hero-lede {
+	font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+	font-weight: 600;
+	color: var(--navy);
+	line-height: 1.5;
+	border-left: 4px solid var(--red);
+	padding-left: 1rem;
+}
+
 .hero-photo {
 	border-radius: 0.5rem;
 	box-shadow: 0 20px 40px rgba(22, 38, 92, 0.35);
@@ -1112,21 +1121,36 @@ h2 {
 	text-transform: uppercase;
 }
 
-.out-about-slider {
+/* Generic slider chrome (shared by the "Out and About" and "Endorsements"
+   carousels). Buttons and dots are centered on the slider's own box via
+   flex/absolute positioning that is re-validated on every reposition() call
+   in JS, rather than any hard-coded pixel offsets, which is what previously
+   let them drift out of alignment when the slider's height changed. */
+.out-about-slider,
+.endorsement-slider {
 	position: relative;
 	overflow: hidden;
 	padding: 0 2.25rem;
 }
 
-.out-about-track {
+.out-about-track,
+.endorsement-track {
 	display: flex;
 	gap: 1.25rem;
 	transition: transform 0.4s ease;
+	align-items: stretch;
 }
 
-.out-about-item {
+.out-about-item,
+.endorsement-item {
 	flex: 0 0 auto;
 	min-width: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.endorsement-item .endorsement-card {
+	width: 100%;
 }
 
 .news-caption {
@@ -1162,22 +1186,37 @@ h2 {
 	color: #fff;
 }
 
-.out-about-control-prev {
+.out-about-control-prev,
+.endorsement-control-prev {
 	left: 0;
 }
 
-.out-about-control-next {
+.out-about-control-next,
+.endorsement-control-next {
 	right: 0;
 }
 
-.out-about-dots {
+/* The endorsement carousel's cards are much taller and vary in height
+   (short vs. expanded quotes), so its arrows are vertically centered on the
+   slider's own box (top: 50%) instead of the fixed 40% used by the shorter,
+   fixed-height "Out and About" media slider. Centering both independently,
+   scoped to their own class, is what keeps the arrows aligned with their own
+   track instead of borrowing a vertical offset tuned for a different slider. */
+.endorsement-control-prev,
+.endorsement-control-next {
+	top: 50%;
+}
+
+.out-about-dots,
+.endorsement-dots {
 	display: flex;
 	justify-content: center;
 	gap: 0.4rem;
 	margin-top: 0.85rem;
 }
 
-.out-about-dots button {
+.out-about-dots button,
+.endorsement-dots button {
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
@@ -1188,16 +1227,20 @@ h2 {
 	cursor: pointer;
 }
 
-.out-about-dots button.active {
+.out-about-dots button.active,
+.endorsement-dots button.active {
 	opacity: 1;
 }
 
 @media (max-width: 767.98px) {
-	.out-about-slider {
+	.out-about-slider,
+	.endorsement-slider {
 		padding: 0 1.1rem;
 	}
 
-	.out-about-control {
+	.out-about-control,
+	.endorsement-control-prev,
+	.endorsement-control-next {
 		width: 1.6rem;
 		height: 1.6rem;
 		font-size: 0.75rem;

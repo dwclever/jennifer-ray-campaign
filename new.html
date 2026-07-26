@@ -19,7 +19,7 @@
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
 			rel="stylesheet"
 		/>
-		<link href="css/new-style.css?v=8" rel="stylesheet" />
+		<link href="css/new-style.css?v=9" rel="stylesheet" />
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	<body>
@@ -65,7 +65,7 @@
 							Speak Louder<br />
 							Than Words
 						</h1>
-						<p class="fs-5 mb-4" style="max-width: 32rem">
+						<p class="hero-lede mb-4" style="max-width: 32rem">
 							An advocate for taxpayers,<br />
 							a neighbor who listens, and<br />
 							a leader willing to ask the hard questions
@@ -1037,130 +1037,185 @@
 					</div>
 					<h2 class="text-navy">Endorsements</h2>
 				</div>
-				<div class="row g-4">
-					<div class="col-lg-4">
-						<div class="endorsement-card">
-							<i class="fas fa-quote-left endorsement-quote-icon"></i>
-							<p class="mb-3">
-								Jennifer Ray has already shown us the kind of commissioner she intends to be. Long before she was the
-								republican nominee, she spent countless hours attending meetings, requesting public records, asking
-								difficult questions, and holding local government accountable&mdash;all without a title and at her own
-								expense.
-							</p>
-							<div class="collapse endorsement-more" id="endorseTammy">
-								<p class="mb-3">
-									Leadership isn't about making promises during a campaign. It's about demonstrating commitment before
-									ever taking office.
-								</p>
-								<p class="mb-3">
-									Jennifer has earned my trust because she has done the work. She has proven she cares deeply about Putnam
-									County, believes taxpayers deserve transparency, and isn't afraid to ask the questions many of us are
-									already asking.
-								</p>
-								<p class="mb-0">
-									On November 3, I'll proudly vote for Jennifer Ray for District 4 Commissioner, and I encourage everyone
-									in District 4 to do the same.
-								</p>
-							</div>
-							<button
-								class="endorsement-toggle"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#endorseTammy"
-								aria-expanded="false"
-								aria-controls="endorseTammy"
-							>
-								<span class="show-more-label">Read Full Endorsement</span>
-								<span class="show-less-label">Show Less</span>
-								<i class="fas fa-chevron-down"></i>
-							</button>
-							<div class="endorsement-author">
-								<strong>Tammy Lankford</strong>
-								<span>Owner/Broker, Lane Realty</span>
-							</div>
-						</div>
-					</div>
 
-					<div class="col-lg-4">
-						<div class="endorsement-card">
-							<i class="fas fa-quote-left endorsement-quote-icon"></i>
-							<p class="mb-3">
-								Today brings new challenges for rural counties across America. We are being bombarded with massive, energy
-								inefficient, ecosystem draining data centers, massive megawatt power plants to power these data centers,
-								large housing developments (200 or more homes) which get a free 15 year tax ride for the developers, and
-								rock quarries near communities and our beautiful lakes.
-							</p>
-							<div class="collapse endorsement-more" id="endorseGK">
+				<div class="endorsement-slider" id="endorsementSlider">
+					<div class="endorsement-track" id="endorsementTrack">
+						<div class="endorsement-item">
+							<div class="endorsement-card">
+								<i class="fas fa-quote-left endorsement-quote-icon"></i>
 								<p class="mb-3">
-									These WILL affect our way of life in irreversible ways. It will take decades to see any type of property
-									tax benefits&mdash;if at all. Jennifer Ray has been working tirelessly to promote transparency and to
-									ensure appropriate spending of our hard earned tax dollars. It is the moral and ethical responsibility
-									of the county commissioners we elect to do this.
+									Jennifer Ray has already shown us the kind of commissioner she intends to be. Long before she was the
+									republican nominee, she spent countless hours attending meetings, requesting public records, asking
+									difficult questions, and holding local government accountable&mdash;all without a title and at her own
+									expense.
 								</p>
-								<p class="mb-3">
-									Jennifer has pummeled through countless documents from numerous open records requests to protect us. We
-									are the hardworking citizens that end up bearing the tax burdens and decreased quality of life for all
-									of the necessary infrastructure and drain on our resources. We are subject to increased traffic, loss of
-									beautiful farmland, wildlife disruption, irreversible water and air pollution, and overdevelopment of
-									our beautiful county.
-								</p>
-								<p class="mb-0">
-									We can grow&mdash;but we need to grow efficiently and without placing the burden on our residents.
-									Please consider a vote for Jennifer Ray. She is one of the good guys. Her track record proves this.
-								</p>
-							</div>
-							<button
-								class="endorsement-toggle"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#endorseGK"
-								aria-expanded="false"
-								aria-controls="endorseGK"
-							>
-								<span class="show-more-label">Read Full Endorsement</span>
-								<span class="show-less-label">Show Less</span>
-								<i class="fas fa-chevron-down"></i>
-							</button>
-							<div class="endorsement-author">
-								<strong>G Konzelman</strong>
+								<div class="collapse endorsement-more" id="endorseTammy">
+									<p class="mb-3">
+										Leadership isn't about making promises during a campaign. It's about demonstrating commitment before
+										ever taking office.
+									</p>
+									<p class="mb-3">
+										Jennifer has earned my trust because she has done the work. She has proven she cares deeply about
+										Putnam County, believes taxpayers deserve transparency, and isn't afraid to ask the questions many
+										of us are already asking.
+									</p>
+									<p class="mb-0">
+										On November 3, I'll proudly vote for Jennifer Ray for District 4 Commissioner, and I encourage
+										everyone in District 4 to do the same.
+									</p>
+								</div>
+								<button
+									class="endorsement-toggle"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#endorseTammy"
+									aria-expanded="false"
+									aria-controls="endorseTammy"
+								>
+									<span class="show-more-label">Read Full Endorsement</span>
+									<span class="show-less-label">Show Less</span>
+									<i class="fas fa-chevron-down"></i>
+								</button>
+								<div class="endorsement-author">
+									<strong>Tammy Lankford</strong>
+									<span>Owner/Broker, Lane Realty</span>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="col-lg-4">
-						<div class="endorsement-card">
-							<i class="fas fa-quote-left endorsement-quote-icon"></i>
-							<p class="mb-3">
-								I have lost count of the number of Open Records requests Ms. Ray has submitted over the last two years in
-								order to obtain information regarding how our county is conducting its business.
-							</p>
-							<div class="collapse endorsement-more" id="endorseBilly">
+						<div class="endorsement-item">
+							<div class="endorsement-card">
+								<i class="fas fa-quote-left endorsement-quote-icon"></i>
 								<p class="mb-3">
-									She is no "johnny come lately" when it comes to taking a proactive role in calling out our elected and
-									appointed officials when they have been less than transparent in their decision making. She was one of
-									the first to draw attention to the PDA and that disastrous tax abatement they approved for rental
-									properties on Harmony Rd.
+									Today brings new challenges for rural counties across America. We are being bombarded with massive,
+									energy inefficient, ecosystem draining data centers, massive megawatt power plants to power these data
+									centers, large housing developments (200 or more homes) which get a free 15 year tax ride for the
+									developers, and rock quarries near communities and our beautiful lakes.
 								</p>
-								<p class="mb-0">Ms. Ray is the type of person I want as the next District 4 Commissioner.</p>
+								<div class="collapse endorsement-more" id="endorseGK">
+									<p class="mb-3">
+										These WILL affect our way of life in irreversible ways. It will take decades to see any type of
+										property tax benefits&mdash;if at all. Jennifer Ray has been working tirelessly to promote
+										transparency and to ensure appropriate spending of our hard earned tax dollars. It is the moral and
+										ethical responsibility of the county commissioners we elect to do this.
+									</p>
+									<p class="mb-3">
+										Jennifer has pummeled through countless documents from numerous open records requests to protect us.
+										We are the hardworking citizens that end up bearing the tax burdens and decreased quality of life
+										for all of the necessary infrastructure and drain on our resources. We are subject to increased
+										traffic, loss of beautiful farmland, wildlife disruption, irreversible water and air pollution, and
+										overdevelopment of our beautiful county.
+									</p>
+									<p class="mb-0">
+										We can grow&mdash;but we need to grow efficiently and without placing the burden on our residents.
+										Please consider a vote for Jennifer Ray. She is one of the good guys. Her track record proves this.
+									</p>
+								</div>
+								<button
+									class="endorsement-toggle"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#endorseGK"
+									aria-expanded="false"
+									aria-controls="endorseGK"
+								>
+									<span class="show-more-label">Read Full Endorsement</span>
+									<span class="show-less-label">Show Less</span>
+									<i class="fas fa-chevron-down"></i>
+								</button>
+								<div class="endorsement-author">
+									<strong>G Konzelman</strong>
+								</div>
 							</div>
-							<button
-								class="endorsement-toggle"
-								type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#endorseBilly"
-								aria-expanded="false"
-								aria-controls="endorseBilly"
-							>
-								<span class="show-more-label">Read Full Endorsement</span>
-								<span class="show-less-label">Show Less</span>
-								<i class="fas fa-chevron-down"></i>
-							</button>
-							<div class="endorsement-author">
-								<strong>Billy Webster</strong>
-								<span>Former Putnam County BOC Chairman &amp; District 4 Commissioner (12 Years)</span>
+						</div>
+
+						<div class="endorsement-item">
+							<div class="endorsement-card">
+								<i class="fas fa-quote-left endorsement-quote-icon"></i>
+								<p class="mb-3">
+									I have lost count of the number of Open Records requests Ms. Ray has submitted over the last two years
+									in order to obtain information regarding how our county is conducting its business.
+								</p>
+								<div class="collapse endorsement-more" id="endorseBilly">
+									<p class="mb-3">
+										She is no "johnny come lately" when it comes to taking a proactive role in calling out our elected
+										and appointed officials when they have been less than transparent in their decision making. She was
+										one of the first to draw attention to the PDA and that disastrous tax abatement they approved for
+										rental properties on Harmony Rd.
+									</p>
+									<p class="mb-0">Ms. Ray is the type of person I want as the next District 4 Commissioner.</p>
+								</div>
+								<button
+									class="endorsement-toggle"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#endorseBilly"
+									aria-expanded="false"
+									aria-controls="endorseBilly"
+								>
+									<span class="show-more-label">Read Full Endorsement</span>
+									<span class="show-less-label">Show Less</span>
+									<i class="fas fa-chevron-down"></i>
+								</button>
+								<div class="endorsement-author">
+									<strong>Billy Webster</strong>
+									<span>Former Putnam County BOC Chairman &amp; District 4 Commissioner (12 Years)</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="endorsement-item">
+							<div class="endorsement-card">
+								<i class="fas fa-quote-left endorsement-quote-icon"></i>
+								<p class="mb-3">
+									A year or two ago, while reading Taxpayer Watchdog on Facebook, I had a question about the topic at
+									hand. I took a chance and sent Ms. Ray a private message, and to my surprise, she responded almost
+									immediately.
+								</p>
+								<div class="collapse endorsement-more" id="endorseAnne">
+									<p class="mb-3">
+										Over the next year or more, I continued to ask her questions, and she always replied with informed,
+										thoughtful answers. I was impressed. When I learned she was seeking my district commissioner seat, I
+										immediately messaged her again and said, &ldquo;Count me in! I'll help you in whatever way I
+										can!&rdquo;
+									</p>
+									<p class="mb-3">
+										Sometime in March, she sat down at my kitchen table, and we met face to face. Throughout this
+										campaign, I've gotten to know her and come to appreciate her energy, perseverance, foresight, and
+										intelligence. No obstacle seems insurmountable to her. She never lets anything get to her. Jennifer
+										Ray is truly unsinkable.
+									</p>
+									<p class="mb-0">
+										I am convinced her mind never stops working, even while she sleeps. She is innovative, creative, and
+										unbeatable. Putnam County, we are fortunate to have her.
+									</p>
+								</div>
+								<button
+									class="endorsement-toggle"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#endorseAnne"
+									aria-expanded="false"
+									aria-controls="endorseAnne"
+								>
+									<span class="show-more-label">Read Full Endorsement</span>
+									<span class="show-less-label">Show Less</span>
+									<i class="fas fa-chevron-down"></i>
+								</button>
+								<div class="endorsement-author">
+									<strong>Anne Rice</strong>
+									<span>Taxpayer, District 4</span>
+								</div>
 							</div>
 						</div>
 					</div>
+					<button class="out-about-control endorsement-control-prev" type="button" id="endorsementPrev" aria-label="Previous">
+						<i class="fas fa-chevron-left"></i>
+					</button>
+					<button class="out-about-control endorsement-control-next" type="button" id="endorsementNext" aria-label="Next">
+						<i class="fas fa-chevron-right"></i>
+					</button>
+					<div class="out-about-dots endorsement-dots" id="endorsementDots"></div>
 				</div>
 			</div>
 		</section>
@@ -1173,10 +1228,16 @@
 						<span class="brand-sub d-block">Putnam County Commission &middot; District 4</span>
 					</div>
 					<div class="col-lg-6 d-flex justify-content-center justify-content-lg-end footer-social">
-						<a href="https://www.facebook.com/groups/taxpayerwatchdoggroupputnamcountyga" aria-label="Facebook"
+						<a
+							href="https://www.facebook.com/groups/taxpayerwatchdoggroupputnamcountyga"
+							target="_blank"
+							rel="noopener"
+							aria-label="Facebook"
 							><i class="fab fa-facebook"></i
 						></a>
-						<a href="https://www.youtube.com/@JenniferRay-p5w" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+						<a href="https://www.youtube.com/@JenniferRay-p5w" target="_blank" rel="noopener" aria-label="YouTube"
+							><i class="fab fa-youtube"></i
+						></a>
 						<a href="mailto:votejenniferray@outlook.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
 					</div>
 				</div>
@@ -1197,10 +1258,10 @@
 						<a href="mailto:votejenniferray@outlook.com"
 							><i class="fas fa-envelope footer-link-icon"></i>votejenniferray@outlook.com</a
 						>
-						<a href="https://www.facebook.com/groups/taxpayerwatchdoggroupputnamcountyga"
+						<a href="https://www.facebook.com/groups/taxpayerwatchdoggroupputnamcountyga" target="_blank" rel="noopener"
 							><i class="fab fa-facebook footer-link-icon"></i>Taxpayer's Watchdog Group</a
 						>
-						<a href="https://www.youtube.com/@JenniferRay-p5w"
+						<a href="https://www.youtube.com/@JenniferRay-p5w" target="_blank" rel="noopener"
 							><i class="fab fa-youtube footer-link-icon"></i>Jennifer Ray on YouTube</a
 						>
 					</div>
@@ -1504,19 +1565,52 @@
 				});
 			})();
 
-			(function setupOutAboutSlider() {
-				const slider = document.getElementById("outAboutSlider");
-				const track = document.getElementById("outAboutTrack");
-				const prevBtn = document.getElementById("outAboutPrev");
-				const nextBtn = document.getElementById("outAboutNext");
-				const dotsWrap = document.getElementById("outAboutDots");
+			/**
+			 * Generic, hardened carousel/slider builder.
+			 *
+			 * Handles the "arrows/dots drift out of alignment" class of bugs by:
+			 *  - Re-measuring and re-applying the transform (without animating) any time
+			 *    the slider becomes visible again, its size changes, or its content
+			 *    reflows (fonts loading, images loading, collapse expanding, etc.),
+			 *    instead of only reacting to window resize.
+			 *  - Using a ResizeObserver on the slider itself, which fires for layout
+			 *    changes that a plain window "resize" listener would miss (e.g. a
+			 *    parent flex/grid column changing width without the viewport changing).
+			 *  - Never trusting a stale itemWidth: every reposition starts by
+			 *    re-measuring before it moves the track.
+			 *  - Snapping to a clamped, valid index if the number of visible slots
+			 *    changes (e.g. rotating a device), so the track can't end up
+			 *    transformed past its own content.
+			 *  - Pausing all of the above while a Bootstrap collapse inside the
+			 *    slider is actively expanding/collapsing (see pause()/resume()),
+			 *    so the ResizeObserver firing on every frame of a "Read Full
+			 *    Endorsement" height animation can't fight with Bootstrap's own
+			 *    height transition and cut it off partway through.
+			 */
+			function setupSlider(options) {
+				const slider = document.getElementById(options.sliderId);
+				const track = document.getElementById(options.trackId);
+				const prevBtn = document.getElementById(options.prevId);
+				const nextBtn = document.getElementById(options.nextId);
+				const dotsWrap = document.getElementById(options.dotsId);
 				if (!slider || !track || !prevBtn || !nextBtn || !dotsWrap) return;
 
-				const visibleCount = 2;
-				const gapPx = 20;
+				const gapPx = typeof options.gapPx === "number" ? options.gapPx : 20;
+				const autoplayDelayMs = options.autoplayDelayMs || 0;
+				const getVisibleCount =
+					typeof options.getVisibleCount === "function"
+						? options.getVisibleCount
+						: function () {
+								return options.visibleCount || 1;
+							};
+
 				const realItems = Array.from(track.children);
 				const totalReal = realItems.length;
+
+				let visibleCount = getVisibleCount();
 				if (totalReal <= visibleCount) return;
+
+				let paused = false;
 
 				function cloneItem(el) {
 					const clone = el.cloneNode(true);
@@ -1527,42 +1621,59 @@
 					return clone;
 				}
 
-				realItems
-					.slice(totalReal - visibleCount)
-					.reverse()
-					.forEach(function (el) {
-						track.insertBefore(cloneItem(el), track.firstChild);
-					});
-				realItems.slice(0, visibleCount).forEach(function (el) {
-					track.appendChild(cloneItem(el));
-				});
-
-				const offset = visibleCount;
-				const startIndex = offset;
-				const endIndex = offset + (totalReal - visibleCount);
+				let offset = visibleCount;
+				let startIndex = offset;
+				let endIndex = offset + (totalReal - visibleCount);
 				let currentIndex = startIndex;
 				let itemWidth = 0;
+				let dots = [];
 
-				const dots = [];
-				for (let i = 0; i <= totalReal - visibleCount; i++) {
-					const dot = document.createElement("button");
-					dot.type = "button";
-					dot.setAttribute("aria-label", "Go to item " + (i + 1));
-					dot.addEventListener("click", function () {
-						goTo(offset + i);
+				function buildClones(count) {
+					// Remove any previously-added clones before rebuilding, so this is
+					// safe to call again if visibleCount changes at runtime.
+					track.querySelectorAll('[aria-hidden="true"]').forEach(function (el) {
+						el.remove();
 					});
-					dotsWrap.appendChild(dot);
-					dots.push(dot);
+					realItems
+						.slice(totalReal - count)
+						.reverse()
+						.forEach(function (el) {
+							track.insertBefore(cloneItem(el), track.firstChild);
+						});
+					realItems.slice(0, count).forEach(function (el) {
+						track.appendChild(cloneItem(el));
+					});
+				}
+
+				function buildDots() {
+					dotsWrap.innerHTML = "";
+					dots = [];
+					for (let i = 0; i <= totalReal - visibleCount; i++) {
+						const dot = document.createElement("button");
+						dot.type = "button";
+						dot.setAttribute("aria-label", "Go to item " + (i + 1));
+						dot.addEventListener("click", function () {
+							goTo(offset + i);
+							if (options.onManualNav) options.onManualNav();
+						});
+						dotsWrap.appendChild(dot);
+						dots.push(dot);
+					}
 				}
 
 				function measure() {
+					// Always re-read the slider's actual current width. This is what
+					// keeps the arrows/dots from drifting: we never rely on a width
+					// computed at an earlier point in time.
 					const sliderWidth = slider.clientWidth;
-					itemWidth = (sliderWidth - gapPx) / visibleCount;
+					if (sliderWidth <= 0) return false;
+					itemWidth = (sliderWidth - gapPx * (visibleCount - 1)) / visibleCount;
 					Array.from(track.children).forEach(function (item) {
 						item.style.flex = "0 0 " + itemWidth + "px";
 						item.style.width = itemWidth + "px";
 					});
 					track.style.gap = gapPx + "px";
+					return true;
 				}
 
 				function applyTransform(animate) {
@@ -1576,20 +1687,45 @@
 				}
 
 				function updateDots() {
-					const realPosition = Math.round(Math.min(Math.max(currentIndex - offset, 0), totalReal - visibleCount));
+					const span = Math.max(totalReal - visibleCount, 1);
+					const realPosition = Math.round(Math.min(Math.max(currentIndex - offset, 0), span));
 					dots.forEach(function (dot, i) {
 						dot.classList.toggle("active", i === realPosition);
 					});
 				}
 
-				function goTo(index) {
-					currentIndex = index;
-					applyTransform(true);
+				function reposition(animate) {
+					if (paused) return;
+					if (!measure()) return;
+					applyTransform(!!animate);
 					updateDots();
 				}
 
+				function goTo(index) {
+					currentIndex = index;
+					reposition(true);
+				}
+
+				function rebuildForVisibleCount(newVisibleCount) {
+					visibleCount = newVisibleCount;
+					offset = visibleCount;
+					startIndex = offset;
+					endIndex = offset + (totalReal - visibleCount);
+					buildClones(visibleCount);
+					// Clamp currentIndex into the valid range for the new layout.
+					currentIndex = Math.min(Math.max(currentIndex, startIndex), endIndex);
+					buildDots();
+					reposition(false);
+				}
+
+				// Only react to a transitionend that actually came from the track's
+				// own transform transition -- not one that bubbled up from some
+				// descendant (e.g. the chevron icon on "Read Full Endorsement"
+				// rotating, which has its own CSS transform transition). Reacting to
+				// those bubbled events was what let a click on the toggle button
+				// spuriously re-trigger the loop-wrap correction below.
 				track.addEventListener("transitionend", function (e) {
-					if (e.propertyName !== "transform") return;
+					if (e.target !== track || e.propertyName !== "transform") return;
 					if (currentIndex > endIndex) {
 						currentIndex -= totalReal;
 						applyTransform(false);
@@ -1597,26 +1733,53 @@
 						currentIndex += totalReal;
 						applyTransform(false);
 					}
+					updateDots();
 				});
 
 				prevBtn.addEventListener("click", function () {
 					goTo(currentIndex - 1);
-					restartAutoplay();
+					if (options.onManualNav) options.onManualNav();
 				});
 				nextBtn.addEventListener("click", function () {
 					goTo(currentIndex + 1);
-					restartAutoplay();
-				});
-				dots.forEach(function (dot) {
-					dot.addEventListener("click", restartAutoplay);
+					if (options.onManualNav) options.onManualNav();
 				});
 
+				// React to viewport resizes...
 				window.addEventListener("resize", function () {
-					measure();
-					applyTransform(false);
+					const newVisibleCount = getVisibleCount();
+					if (newVisibleCount !== visibleCount) {
+						rebuildForVisibleCount(newVisibleCount);
+					} else {
+						reposition(false);
+					}
 				});
 
-				const AUTOPLAY_DELAY_MS = 4500;
+				// ...and, critically, to the slider element's own box changing size for
+				// any other reason (sidebar collapsing, a card growing/shrinking,
+				// fonts/images loading late, an accordion opening above it, etc). This
+				// is the main hardening against the "arrows end up misaligned" bug,
+				// since that class of bug is usually caused by a layout shift that
+				// never fires a window resize event at all. It's deliberately a no-op
+				// while paused (see pause()), so it can't fight a Bootstrap collapse
+				// animation happening inside the slider.
+				if (window.ResizeObserver) {
+					const ro = new ResizeObserver(function () {
+						reposition(false);
+					});
+					ro.observe(slider);
+				}
+
+				// Re-measure once everything (including images) has finished loading,
+				// since image loads can change slider width after our first measure.
+				window.addEventListener("load", function () {
+					reposition(false);
+				});
+
+				buildClones(visibleCount);
+				buildDots();
+				reposition(false);
+
 				let autoplayTimer = null;
 
 				function stopAutoplay() {
@@ -1627,32 +1790,121 @@
 				}
 
 				function startAutoplay() {
+					if (!autoplayDelayMs) return;
 					stopAutoplay();
 					autoplayTimer = setInterval(function () {
+						if (paused) return;
+						if (options.shouldPauseAutoplay && options.shouldPauseAutoplay()) {
+							return;
+						}
 						goTo(currentIndex + 1);
-					}, AUTOPLAY_DELAY_MS);
+					}, autoplayDelayMs);
 				}
 
-				function restartAutoplay() {
+				if (autoplayDelayMs) {
+					slider.addEventListener("mouseenter", stopAutoplay);
+					slider.addEventListener("mouseleave", startAutoplay);
+					slider.addEventListener("focusin", stopAutoplay);
+					slider.addEventListener("focusout", startAutoplay);
+					document.addEventListener("visibilitychange", function () {
+						if (document.hidden) {
+							stopAutoplay();
+						} else {
+							startAutoplay();
+						}
+					});
 					startAutoplay();
 				}
 
-				slider.addEventListener("mouseenter", stopAutoplay);
-				slider.addEventListener("mouseleave", startAutoplay);
-				slider.addEventListener("focusin", stopAutoplay);
-				slider.addEventListener("focusout", startAutoplay);
-				document.addEventListener("visibilitychange", function () {
-					if (document.hidden) {
-						stopAutoplay();
-					} else {
-						startAutoplay();
-					}
+				return {
+					goTo,
+					stopAutoplay,
+					startAutoplay,
+					reposition,
+					// Fully suspend repositioning/measuring until resume() is called.
+					// Used to keep this slider's own layout logic from interrupting a
+					// Bootstrap collapse animation happening inside one of its slides.
+					pause: function () {
+						paused = true;
+					},
+					resume: function () {
+						paused = false;
+						reposition(false);
+					},
+				};
+			}
+
+			setupSlider({
+				sliderId: "outAboutSlider",
+				trackId: "outAboutTrack",
+				prevId: "outAboutPrev",
+				nextId: "outAboutNext",
+				dotsId: "outAboutDots",
+				visibleCount: 2,
+				gapPx: 20,
+				autoplayDelayMs: 4500,
+			});
+
+			// Endorsements carousel: each slide can hold a lot of text (and an
+			// expandable "read more" section), so autoplay is deliberately much more
+			// conservative here than the photo/video slider above:
+			//  - a much longer interval, so a normal reader has time to finish a card
+			//  - autoplay pauses (and stays paused) the moment any endorsement is
+			//    expanded via "Read Full Endorsement", not just on hover/focus,
+			//    since someone reading longer text on a touch device won't
+			//    necessarily be hovering or focused on anything
+			//  - autoplay is paused entirely once a person has manually navigated
+			//    (arrows or dots) or expanded any card, on the assumption that
+			//    someone who has started actively engaging wants to stay in control
+			//  - the slider is fully paused (pause()/resume()) for the duration of
+			//    any "Read Full Endorsement" expand/collapse animation, so the
+			//    carousel's own resize handling can never interrupt it (this is
+			//    what was breaking the expand/collapse animation)
+			(function setupEndorsementSlider() {
+				let userTookControl = false;
+				let anyExpanded = false;
+
+				const endorsementApi = setupSlider({
+					sliderId: "endorsementSlider",
+					trackId: "endorsementTrack",
+					prevId: "endorsementPrev",
+					nextId: "endorsementNext",
+					dotsId: "endorsementDots",
+					gapPx: 24,
+					autoplayDelayMs: 9000,
+					getVisibleCount: function () {
+						return window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
+					},
+					onManualNav: function () {
+						userTookControl = true;
+					},
+					shouldPauseAutoplay: function () {
+						return userTookControl || anyExpanded;
+					},
 				});
 
-				measure();
-				applyTransform(false);
-				updateDots();
-				startAutoplay();
+				if (!endorsementApi) return;
+
+				document.querySelectorAll("#endorsementTrack .endorsement-more").forEach(function (collapseEl) {
+					collapseEl.addEventListener("show.bs.collapse", function () {
+						anyExpanded = true;
+						endorsementApi.stopAutoplay();
+						endorsementApi.pause();
+					});
+					collapseEl.addEventListener("shown.bs.collapse", function () {
+						endorsementApi.resume();
+					});
+					collapseEl.addEventListener("hide.bs.collapse", function () {
+						endorsementApi.pause();
+					});
+					collapseEl.addEventListener("hidden.bs.collapse", function () {
+						// Once someone has opened any endorsement, keep autoplay paused
+						// even after they collapse it back down, rather than letting it
+						// spring back to life mid-read.
+						anyExpanded = true;
+						endorsementApi.resume();
+					});
+				});
 			})();
 
 			(function setupPhotoLightbox() {
