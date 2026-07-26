@@ -141,9 +141,41 @@ h2 {
 	color: #fff;
 }
 
+.preset-amount-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.35rem;
+	transition:
+		transform 0.15s ease,
+		box-shadow 0.15s ease,
+		background-color 0.15s ease,
+		color 0.15s ease;
+}
+
+.preset-amount-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(22, 38, 92, 0.15);
+}
+
+.preset-amount-btn:active {
+	transform: translateY(0);
+}
+
+.preset-amount-btn .preset-amount-check {
+	display: none;
+	font-size: 0.7rem;
+	line-height: 1;
+}
+
 .preset-amount-btn.active {
 	background-color: var(--navy);
 	color: #fff;
+	box-shadow: 0 4px 12px rgba(22, 38, 92, 0.25);
+}
+
+.preset-amount-btn.active .preset-amount-check {
+	display: inline-flex;
 }
 
 /* Nav */
@@ -507,6 +539,68 @@ h2 {
 	border: 4px solid rgba(212, 175, 55, 0.3);
 }
 
+/* Icon-header-paragraph feature blocks used in the "Years Before the
+   Ballot" story, so long-form copy reads as scannable highlights instead
+   of an unbroken wall of text. */
+.about-feature-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.75rem;
+}
+
+.about-feature + .about-feature {
+	padding-top: 1.75rem;
+	border-top: 1px solid rgba(22, 38, 92, 0.12);
+}
+
+.about-feature-head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.about-feature-icon {
+	flex-shrink: 0;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	background: var(--navy);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.1rem;
+	box-shadow: 0 6px 14px rgba(22, 38, 92, 0.25);
+}
+
+.about-feature-icon svg {
+	width: 20px;
+	height: 20px;
+	display: block;
+}
+
+.about-feature-title {
+	margin: 0;
+	color: var(--navy);
+	font-weight: 800;
+	font-size: 1.05rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	line-height: 1.25;
+}
+
+.about-feature-text {
+	color: var(--charcoal);
+	margin-bottom: 0.75rem;
+}
+
+.about-feature-text:last-child {
+	margin-bottom: 0;
+}
+
 .dates-photo {
 	max-height: 340px;
 	width: 100%;
@@ -854,6 +948,10 @@ h2 {
 	object-position: center 85%;
 }
 
+.news-photo-wrap--top img {
+	object-position: center top;
+}
+
 .news-photo-wrap::after {
 	content: "\f065";
 	font-family: "Font Awesome 6 Free";
@@ -903,6 +1001,10 @@ h2 {
 
 .news-video-wrap .video-frame.fb-reel-frame {
 	aspect-ratio: 267 / 476;
+}
+
+.news-video-wrap .video-frame.fb-wide-frame {
+	aspect-ratio: 560 / 314;
 }
 
 .news-video-wrap .video-frame iframe {
@@ -1534,6 +1636,65 @@ h2 {
 .form-panel .form-control:focus {
 	border-color: var(--navy);
 	box-shadow: 0 0 0 0.2rem rgba(22, 38, 92, 0.2);
+}
+
+/* Donate form: "or enter a custom amount" divider between presets and the
+   custom amount field. */
+.donate-divider {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	color: #9aa1af;
+	font-size: 0.78rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.donate-divider::before,
+.donate-divider::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: #e5e7eb;
+}
+
+/* Give the custom amount field a "$" prefix so it reads as a currency input
+   at a glance instead of a bare number field. */
+.donate-amount-group .input-group-text {
+	background: var(--ivory);
+	border-color: #ced4da;
+	color: var(--navy);
+	font-weight: 700;
+}
+
+.donate-amount-group .form-control:focus {
+	z-index: 3;
+}
+
+.donate-amount-group:focus-within .input-group-text {
+	border-color: var(--navy);
+}
+
+/* Smoothly expand/collapse the contributor-details section instead of
+   snapping it open with display:none/block, so confirming an amount feels
+   like a continuous step rather than a jump cut. */
+.donate-details-view {
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transform: translateY(-8px);
+	transition:
+		max-height 0.4s ease,
+		opacity 0.3s ease,
+		transform 0.3s ease;
+	pointer-events: none;
+}
+
+.donate-details-view.is-open {
+	max-height: 2200px;
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
 }
 
 .form-panel .form-control.is-invalid {
