@@ -1302,7 +1302,6 @@ h2 {
 .out-about-track img,
 .out-about-track iframe {
 	-webkit-user-drag: none;
-	user-drag: none;
 }
 
 .out-about-track.is-dragging,

@@ -19,7 +19,7 @@
 			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
 			rel="stylesheet"
 		/>
-		<link href="css/new-style.css?v=19" rel="stylesheet" />
+		<link href="css/new-style.css?v=20" rel="stylesheet" />
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
 	</head>
 	<body>
@@ -73,7 +73,7 @@
 						</p>
 					</div>
 					<div class="col-lg-6 order-1 order-lg-2 text-center">
-						<img src="images/new/jen_hero_image.jpeg" alt="Jennifer Ray" class="img-fluid hero-photo hero-photo-mobile" />
+						<img src="images/jen_hero_image.jpeg" alt="Jennifer Ray" class="img-fluid hero-photo hero-photo-mobile" />
 					</div>
 				</div>
 			</div>
@@ -2275,7 +2275,14 @@
 					if (dragPointerId === null || e.pointerId !== dragPointerId) return;
 					dragDelta = e.clientX - dragStartX;
 					if (!isDragging) {
-						if (Math.abs(dragDelta) < 6) return;
+						// A plain tap on a touchscreen can drift a handful of pixels from
+						// finger-pad imprecision alone. Too low a threshold here means
+						// some ordinary taps get misread as the start of a drag, which
+						// then suppresses the click that would have opened the
+						// lightbox -- showing up as "it takes two taps to open a
+						// photo." 15px asks for a more deliberate swipe before taking
+						// over, while still feeling immediate for an actual drag.
+						if (Math.abs(dragDelta) < 15) return;
 						isDragging = true;
 						track.setPointerCapture(dragPointerId);
 						track.classList.add("is-dragging");
@@ -2380,21 +2387,13 @@
 				autoplayDelayMs: 4500,
 			});
 
-			// Endorsements carousel: each slide can hold a lot of text (and an
-			// expandable "read more" section), so autoplay is deliberately much more
-			// conservative here than the photo/video slider above:
-			//  - a much longer interval, so a normal reader has time to finish a card
-			//  - autoplay pauses (and stays paused) the moment any endorsement is
-			//    expanded via "Read Full Endorsement", not just on hover/focus,
-			//    since someone reading longer text on a touch device won't
-			//    necessarily be hovering or focused on anything
-			//  - autoplay is paused entirely once a person has manually navigated
-			//    (arrows or dots) or expanded any card, on the assumption that
-			//    someone who has started actively engaging wants to stay in control
-			//  - the slider is fully paused (pause()/resume()) for the duration of
-			//    any "Read Full Endorsement" expand/collapse animation, so the
-			//    carousel's own resize handling can never interrupt it (this is
-			//    what was breaking the expand/collapse animation)
+			// Endorsements carousel: autoplay is turned off here (autoplayDelayMs:
+			// 0) -- each slide can hold a lot of text plus an expandable "read
+			// more" section, so this carousel is left fully in the visitor's
+			// control rather than advancing on its own. The pause/resume wiring
+			// below is still needed even with autoplay off, since it's what keeps
+			// the slider's own resize handling from interrupting the "Read Full
+			// Endorsement" expand/collapse animation.
 			(function setupEndorsementSlider() {
 				let userTookControl = false;
 				let anyExpanded = false;
@@ -2406,7 +2405,7 @@
 					nextId: "endorsementNext",
 					dotsId: "endorsementDots",
 					gapPx: 24,
-					autoplayDelayMs: 9000,
+					autoplayDelayMs: 0,
 					loop: false,
 					getVisibleCount: function () {
 						return window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
