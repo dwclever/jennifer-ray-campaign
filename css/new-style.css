@@ -927,8 +927,20 @@ h2 {
 	position: relative;
 	border-radius: 0.4rem;
 	overflow: hidden;
-	height: 190px;
-	width: auto;
+	/* A fixed height (the old approach) always computed the same width via
+	   the aspect ratio, regardless of how much room the carousel item
+	   actually had -- on a narrow container that width could exceed the
+	   item's own box and spill into the next one. min(100%, Npx) instead
+	   gives a definite width that's the SMALLER of "the size this aspect
+	   ratio wants at the intended ~190px-tall size" and "however much room
+	   is actually available" -- so it shrinks to fit instead of
+	   overflowing, and height simply follows from aspect-ratio.
+	   (A width/height of "auto" on both axes was tried here first, but a
+	   flex item whose only child is absolutely positioned -- the <img> --
+	   resolves that combination to 0x0 in Chromium instead of using the
+	   aspect ratio, hence the explicit min() instead.) */
+	width: min(100%, 304px);
+	height: auto;
 	aspect-ratio: 16 / 10;
 	margin: 0 auto;
 	background: #dfe3ea;
@@ -980,15 +992,16 @@ h2 {
 .news-video-wrap {
 	position: relative;
 	cursor: pointer;
-	height: 190px;
-	width: fit-content;
+	width: 100%;
 	margin: 0 auto;
 }
 
 .news-video-wrap .video-frame {
 	position: relative;
-	height: 190px;
-	width: auto;
+	/* Same min(100%, Npx) fix as .news-photo-wrap above, per aspect ratio. */
+	width: min(100%, 304px);
+	height: auto;
+	margin: 0 auto;
 	border-radius: 0.4rem;
 	overflow: hidden;
 	background: #000;
@@ -996,14 +1009,17 @@ h2 {
 }
 
 .news-video-wrap .video-frame.fb-video-frame {
+	width: min(100%, 123px);
 	aspect-ratio: 308 / 476;
 }
 
 .news-video-wrap .video-frame.fb-reel-frame {
+	width: min(100%, 107px);
 	aspect-ratio: 267 / 476;
 }
 
 .news-video-wrap .video-frame.fb-wide-frame {
+	width: min(100%, 339px);
 	aspect-ratio: 560 / 314;
 }
 
@@ -1051,10 +1067,24 @@ h2 {
 }
 
 @media (max-width: 767.98px) {
-	.news-photo-wrap,
-	.news-video-wrap,
+	.news-photo-wrap {
+		width: min(100%, 240px);
+	}
+
 	.news-video-wrap .video-frame {
-		height: 150px;
+		width: min(100%, 240px);
+	}
+
+	.news-video-wrap .video-frame.fb-video-frame {
+		width: min(100%, 97px);
+	}
+
+	.news-video-wrap .video-frame.fb-reel-frame {
+		width: min(100%, 84px);
+	}
+
+	.news-video-wrap .video-frame.fb-wide-frame {
+		width: min(100%, 268px);
 	}
 
 	.news-video-wrap .video-play-badge {
@@ -1237,7 +1267,7 @@ h2 {
 .endorsement-slider {
 	position: relative;
 	overflow: hidden;
-	padding: 0 2.25rem;
+	padding: 0 2.75rem;
 }
 
 .out-about-track,
@@ -1262,6 +1292,27 @@ h2 {
 	min-width: 0;
 	display: flex;
 	flex-direction: column;
+}
+
+.out-about-track,
+.endorsement-track {
+	cursor: grab;
+}
+
+.out-about-track img,
+.out-about-track iframe {
+	-webkit-user-drag: none;
+	user-drag: none;
+}
+
+.out-about-track.is-dragging,
+.endorsement-track.is-dragging {
+	cursor: grabbing;
+}
+
+.out-about-track.is-dragging *,
+.endorsement-track.is-dragging * {
+	user-select: none;
 }
 
 .endorsement-item .endorsement-card {
@@ -1356,7 +1407,7 @@ h2 {
 @media (max-width: 767.98px) {
 	.out-about-slider,
 	.endorsement-slider {
-		padding: 0 1.1rem;
+		padding: 0 2rem;
 	}
 
 	.out-about-control,
