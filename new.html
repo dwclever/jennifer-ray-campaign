@@ -1820,6 +1820,11 @@
 				setupCharCounters(formEl);
 			});
 
+			const donateStep1FormEl = document.getElementById("donateStep1");
+			if (donateStep1FormEl) {
+				setupPhoneMask(donateStep1FormEl);
+			}
+
 			document.querySelectorAll('.navbar-nav .nav-link[href^="#"]').forEach(function (link) {
 				link.addEventListener("click", function () {
 					const navbarCollapse = document.getElementById("mainNav");
