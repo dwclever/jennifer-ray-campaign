@@ -178,7 +178,6 @@ h2 {
 	display: inline-flex;
 }
 
-/* Nav */
 .site-nav {
 	background: #fff;
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -345,7 +344,6 @@ h2 {
 	}
 }
 
-/* Hero */
 .hero-section {
 	position: relative;
 	background-image:
@@ -404,7 +402,6 @@ h2 {
 	display: block;
 }
 
-/* Eyebrow / section labels */
 .eyebrow {
 	color: var(--red);
 	font-weight: 700;
@@ -488,7 +485,6 @@ h2 {
 	font-size: clamp(1.8rem, 3.6vw, 2.5rem);
 }
 
-/* Stats strip */
 .stats-strip {
 	padding: 3rem 0;
 }
@@ -529,7 +525,6 @@ h2 {
 	letter-spacing: 0.02em;
 }
 
-/* Ballot / About preview section */
 .ballot-section img {
 	border-radius: 0.5rem;
 	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
@@ -542,9 +537,6 @@ h2 {
 	border: 4px solid rgba(212, 175, 55, 0.3);
 }
 
-/* Icon-header-paragraph feature blocks used in the "Years Before the
-   Ballot" story, so long-form copy reads as scannable highlights instead
-   of an unbroken wall of text. */
 .about-feature-list {
 	display: flex;
 	flex-direction: column;
@@ -638,7 +630,6 @@ h2 {
 	font-weight: 800;
 }
 
-/* Focused on What Matters */
 .plain-grid {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -743,7 +734,6 @@ h2 {
 	color: #555;
 }
 
-/* Issues detail cards (reused vision-card style) */
 .issue-card {
 	border: 1px solid rgba(22, 38, 92, 0.15);
 	border-radius: 0.5rem;
@@ -811,7 +801,6 @@ h2 {
 	text-decoration-color: rgba(192, 35, 58, 0.5);
 }
 
-/* News thumbnails */
 .news-embed {
 	position: relative;
 	border-radius: 0.4rem;
@@ -930,18 +919,7 @@ h2 {
 	position: relative;
 	border-radius: 0.4rem;
 	overflow: hidden;
-	/* A fixed height (the old approach) always computed the same width via
-	   the aspect ratio, regardless of how much room the carousel item
-	   actually had -- on a narrow container that width could exceed the
-	   item's own box and spill into the next one. min(100%, Npx) instead
-	   gives a definite width that's the SMALLER of "the size this aspect
-	   ratio wants at the intended ~190px-tall size" and "however much room
-	   is actually available" -- so it shrinks to fit instead of
-	   overflowing, and height simply follows from aspect-ratio.
-	   (A width/height of "auto" on both axes was tried here first, but a
-	   flex item whose only child is absolutely positioned -- the <img> --
-	   resolves that combination to 0x0 in Chromium instead of using the
-	   aspect ratio, hence the explicit min() instead.) */
+
 	width: min(100%, 304px);
 	height: auto;
 	aspect-ratio: 16 / 10;
@@ -1001,7 +979,7 @@ h2 {
 
 .news-video-wrap .video-frame {
 	position: relative;
-	/* Same min(100%, Npx) fix as .news-photo-wrap above, per aspect ratio. */
+
 	width: min(100%, 304px);
 	height: auto;
 	margin: 0 auto;
@@ -1097,7 +1075,6 @@ h2 {
 	}
 }
 
-/* Lightbox */
 .lightbox-overlay {
 	position: fixed;
 	inset: 0;
@@ -1201,7 +1178,6 @@ h2 {
 	background: rgba(0, 0, 0, 0.75);
 }
 
-/* Message quote block */
 .quote-block {
 	font-style: italic;
 	font-family: "Playfair Display", Georgia, "Times New Roman", Times, serif;
@@ -1261,11 +1237,6 @@ h2 {
 	text-transform: uppercase;
 }
 
-/* Generic slider chrome (shared by the "Out and About" and "Endorsements"
-   carousels). Buttons and dots are centered on the slider's own box via
-   flex/absolute positioning that is re-validated on every reposition() call
-   in JS, rather than any hard-coded pixel offsets, which is what previously
-   let them drift out of alignment when the slider's height changed. */
 .out-about-slider,
 .endorsement-slider {
 	position: relative;
@@ -1278,14 +1249,7 @@ h2 {
 	display: flex;
 	gap: 1.25rem;
 	transition: transform 0.4s ease;
-	/* NOT align-items: stretch. This track is one continuous flex row -- every
-	   card, including ones currently scrolled off-screen or sitting in the
-	   clone buffer, stays in normal flow and only gets moved visually via
-	   transform. With "stretch", every item in the row is forced to match the
-	   height of the row's tallest item, so expanding one endorsement's "Read
-	   Full Endorsement" (even one that's off-screen) inflated every other
-	   card's height too -- which looked like an unrelated card had expanded
-	   on its own. flex-start makes each card size to its own content only. */
+
 	align-items: flex-start;
 }
 
@@ -1370,12 +1334,6 @@ h2 {
 	right: 0;
 }
 
-/* The endorsement carousel's cards are much taller and vary in height
-   (short vs. expanded quotes), so its arrows are vertically centered on the
-   slider's own box (top: 50%) instead of the fixed 40% used by the shorter,
-   fixed-height "Out and About" media slider. Centering both independently,
-   scoped to their own class, is what keeps the arrows aligned with their own
-   track instead of borrowing a vertical offset tuned for a different slider. */
 .endorsement-control-prev,
 .endorsement-control-next {
 	top: 50%;
@@ -1425,7 +1383,6 @@ h2 {
 	}
 }
 
-/* Get Involved band */
 .involved-band {
 	background: var(--navy);
 	color: #fff;
@@ -1475,7 +1432,6 @@ h2 {
 	letter-spacing: normal;
 }
 
-/* Endorsements */
 .endorsement-card {
 	height: 100%;
 	background: #fff;
@@ -1566,7 +1522,6 @@ h2 {
 	font-size: 0.78rem;
 }
 
-/* Testimonials */
 .testimonial-card {
 	text-align: center;
 	padding: 1.5rem;
@@ -1590,7 +1545,6 @@ h2 {
 	color: var(--navy);
 }
 
-/* Footer */
 .site-footer-v2 {
 	background: var(--navy);
 	color: rgba(255, 255, 255, 0.85);
@@ -1665,7 +1619,6 @@ h2 {
 	text-align: center;
 }
 
-/* Forms (Get Involved / Message / Donate sections) */
 .venmo-qr-wrap {
 	max-width: 55%;
 }
@@ -1691,8 +1644,6 @@ h2 {
 	box-shadow: 0 0 0 0.2rem rgba(22, 38, 92, 0.2);
 }
 
-/* Donate form: "or enter a custom amount" divider between presets and the
-   custom amount field. */
 .donate-divider {
 	display: flex;
 	align-items: center;
@@ -1711,8 +1662,6 @@ h2 {
 	background: #e5e7eb;
 }
 
-/* Give the custom amount field a "$" prefix so it reads as a currency input
-   at a glance instead of a bare number field. */
 .donate-amount-group .input-group-text {
 	background: var(--ivory);
 	border-color: #ced4da;
@@ -1728,9 +1677,6 @@ h2 {
 	border-color: var(--navy);
 }
 
-/* Smoothly expand/collapse the contributor-details section instead of
-   snapping it open with display:none/block, so confirming an amount feels
-   like a continuous step rather than a jump cut. */
 .donate-details-view {
 	max-height: 0;
 	opacity: 0;
