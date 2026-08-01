@@ -915,6 +915,32 @@ h2 {
 	}
 }
 
+.ballot-side-photo--sm {
+	max-height: 300px;
+	max-width: 480px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.quarry-video-embed {
+	position: relative;
+	width: 100%;
+	max-width: 480px;
+	aspect-ratio: 16 / 9;
+	border-radius: 0.75rem;
+	overflow: hidden;
+	background: #000;
+	box-shadow: 0 12px 28px rgba(22, 38, 92, 0.2);
+}
+
+.quarry-video-embed iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
 .news-photo-wrap {
 	position: relative;
 	border-radius: 0.4rem;
