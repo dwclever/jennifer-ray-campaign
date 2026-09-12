@@ -2153,8 +2153,8 @@
 								return options.visibleCount || 1;
 							};
 
-				const realItems = Array.from(track.children);
-				const totalReal = realItems.length;
+				let realItems = Array.from(track.children);
+				let totalReal = realItems.length;
 
 				let visibleCount = getVisibleCount();
 				if (totalReal <= visibleCount) return;
@@ -2268,6 +2268,31 @@
 
 				function rebuildForVisibleCount(newVisibleCount) {
 					visibleCount = newVisibleCount;
+					offset = loop ? visibleCount : 0;
+					startIndex = offset;
+					endIndex = offset + (totalReal - visibleCount);
+					if (loop) buildClones(visibleCount);
+					currentIndex = Math.min(Math.max(currentIndex, startIndex), endIndex);
+					buildDots();
+					reposition(false);
+					updateNavButtons();
+				}
+
+				function removeItem(itemEl) {
+					const idx = realItems.indexOf(itemEl);
+					if (idx === -1) return;
+					realItems.splice(idx, 1);
+					totalReal -= 1;
+					itemEl.remove();
+
+					if (totalReal <= visibleCount) {
+						stopAutoplay();
+						track.querySelectorAll(':scope > [aria-hidden="true"]').forEach(function (el) {
+							el.remove();
+						});
+						return;
+					}
+
 					offset = loop ? visibleCount : 0;
 					startIndex = offset;
 					endIndex = offset + (totalReal - visibleCount);
@@ -2479,6 +2504,7 @@
 					stopAutoplay,
 					startAutoplay,
 					reposition,
+					removeItem,
 					pause: function () {
 						paused = true;
 					},
@@ -2503,6 +2529,32 @@
 				},
 				autoplayDelayMs: 4500,
 			});
+
+			if (outAboutApi) {
+				document.querySelectorAll("#outAboutTrack > .out-about-item").forEach(function (item) {
+					if (item.getAttribute("aria-hidden") === "true") return;
+					const iframe = item.querySelector(".news-video-wrap iframe");
+					if (!iframe) return;
+
+					let settled = false;
+					const failTimer = setTimeout(function () {
+						if (settled) return;
+						settled = true;
+						outAboutApi.removeItem(item);
+					}, 10000);
+
+					iframe.addEventListener("load", function () {
+						settled = true;
+						clearTimeout(failTimer);
+					});
+					iframe.addEventListener("error", function () {
+						if (settled) return;
+						settled = true;
+						clearTimeout(failTimer);
+						outAboutApi.removeItem(item);
+					});
+				});
+			}
 
 			(function setupEndorsementSlider() {
 				let userTookControl = false;

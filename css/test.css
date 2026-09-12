@@ -1409,9 +1409,6 @@ h2 {
 	}
 }
 
-/* TEST: single-column "Out and About" carousel on narrow phones (matches
-   the JS getVisibleCount breakpoint of window.innerWidth < 576) so each
-   preview can use the full slider width instead of splitting it in two. */
 @media (max-width: 575.98px) {
 	.out-about-slider {
 		padding: 0 1.5rem;
