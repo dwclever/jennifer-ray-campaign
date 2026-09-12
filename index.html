@@ -587,6 +587,12 @@
 						<div class="out-about-slider" id="outAboutSlider">
 							<div class="out-about-track" id="outAboutTrack">
 								<div class="out-about-item">
+									<div class="news-photo-wrap">
+										<img src="images/jennifer_with_rick_jackson.jpeg" alt="Jennifer Ray with Rick Jackson" />
+									</div>
+									<div class="news-caption">Proud to support Republican Rick Jackson! <i class="fas fa-flag-usa text-navy" aria-hidden="true"></i></div>
+								</div>
+								<div class="out-about-item">
 									<div
 										class="news-video-wrap"
 										data-aspect="16/9"
@@ -763,6 +769,32 @@
 										<span class="video-play-badge"><i class="fab fa-facebook"></i></span>
 									</div>
 									<div class="news-caption">Possibilities for our future at Dennis Station</div>
+								</div>
+								<div class="out-about-item">
+									<div
+										class="news-video-wrap"
+										data-aspect="267/540"
+										data-video-src="https://www.instagram.com/reel/Dcrds-BAZck/embed"
+										data-video-title="Jennifer Ray on Instagram"
+									>
+										<div class="video-frame ig-reel-frame">
+											<iframe
+												src="https://www.instagram.com/reel/Dcrds-BAZck/embed"
+												title="Jennifer Ray on Instagram"
+												style="border: none; overflow: hidden"
+												scrolling="no"
+												frameborder="0"
+												allowfullscreen="true"
+												allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+											></iframe>
+										</div>
+										<span class="video-scrim"></span>
+										<span class="video-play-badge"><i class="fab fa-instagram"></i></span>
+									</div>
+									<div class="news-caption">
+										New safety lighting at the Dennis Station Boat Ramp, secured through Jennifer's advocacy with Georgia
+										Power and Georgia DNR
+									</div>
 								</div>
 								<div class="out-about-item">
 									<div class="news-photo-wrap">
@@ -2154,7 +2186,7 @@
 				let dots = [];
 
 				function buildClones(count) {
-					track.querySelectorAll('[aria-hidden="true"]').forEach(function (el) {
+					track.querySelectorAll(':scope > [aria-hidden="true"]').forEach(function (el) {
 						el.remove();
 					});
 					realItems
@@ -2294,6 +2326,7 @@
 				updateNavButtons();
 
 				let autoplayTimer = null;
+				let isInViewport = !("IntersectionObserver" in window);
 
 				function stopAutoplay() {
 					if (autoplayTimer) {
@@ -2303,7 +2336,7 @@
 				}
 
 				function startAutoplay() {
-					if (!autoplayDelayMs) return;
+					if (!autoplayDelayMs || !isInViewport) return;
 					stopAutoplay();
 					autoplayTimer = setInterval(function () {
 						if (paused) return;
@@ -2330,7 +2363,24 @@
 							startAutoplay();
 						}
 					});
-					startAutoplay();
+					if ("IntersectionObserver" in window) {
+						const autoplayObserver = new IntersectionObserver(
+							function (entries) {
+								entries.forEach(function (entry) {
+									isInViewport = entry.isIntersecting;
+									if (isInViewport) {
+										startAutoplay();
+									} else {
+										stopAutoplay();
+									}
+								});
+							},
+							{ threshold: 0.5 },
+						);
+						autoplayObserver.observe(slider);
+					} else {
+						startAutoplay();
+					}
 				}
 
 				let dragPointerId = null;
