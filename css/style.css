@@ -1030,11 +1030,6 @@ h2 {
 	aspect-ratio: 560 / 314;
 }
 
-.news-video-wrap .video-frame.ig-reel-frame {
-	width: min(100%, 107px);
-	aspect-ratio: 267 / 540;
-}
-
 .news-video-wrap .video-frame iframe {
 	position: absolute;
 	inset: 0;
@@ -1097,10 +1092,6 @@ h2 {
 
 	.news-video-wrap .video-frame.fb-wide-frame {
 		width: min(100%, 268px);
-	}
-
-	.news-video-wrap .video-frame.ig-reel-frame {
-		width: min(100%, 84px);
 	}
 
 	.news-video-wrap .video-play-badge {
