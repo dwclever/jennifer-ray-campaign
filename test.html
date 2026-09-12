@@ -2498,7 +2498,9 @@
 				getVisibleCount: function () {
 					return window.innerWidth < 576 ? 1 : 2;
 				},
-				gapPx: 14,
+				getGapPx: function () {
+					return window.innerWidth < 576 ? 22 : 14;
+				},
 				autoplayDelayMs: 4500,
 			});
 

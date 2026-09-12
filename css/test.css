@@ -1418,23 +1418,23 @@ h2 {
 	}
 
 	.news-photo-wrap {
-		width: min(88vw, 340px);
+		width: min(100%, 340px);
 	}
 
 	.news-video-wrap .video-frame {
-		width: min(88vw, 340px);
+		width: min(100%, 340px);
 	}
 
 	.news-video-wrap .video-frame.fb-video-frame {
-		width: min(88vw, 138px);
+		width: min(100%, 138px);
 	}
 
 	.news-video-wrap .video-frame.fb-reel-frame {
-		width: min(88vw, 120px);
+		width: min(100%, 120px);
 	}
 
 	.news-video-wrap .video-frame.fb-wide-frame {
-		width: min(88vw, 380px);
+		width: min(100%, 380px);
 	}
 
 	.news-video-wrap .video-play-badge {
