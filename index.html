@@ -747,6 +747,7 @@
 									</div>
 									<div class="news-caption">More tournaments at Dennis Station Boat Launch</div>
 								</div>
+								<!-- Facebook reel is currently returning "video unavailable" intermittently; commented out until it's reliable again.
 								<div class="out-about-item">
 									<div
 										class="news-video-wrap"
@@ -770,6 +771,7 @@
 									</div>
 									<div class="news-caption">Possibilities for our future at Dennis Station</div>
 								</div>
+								-->
 								<div class="out-about-item">
 									<div
 										class="news-video-wrap"
@@ -2495,8 +2497,12 @@
 				prevId: "outAboutPrev",
 				nextId: "outAboutNext",
 				dotsId: "outAboutDots",
-				visibleCount: 2,
-				gapPx: 14,
+				getVisibleCount: function () {
+					return window.innerWidth < 576 ? 1 : 2;
+				},
+				getGapPx: function () {
+					return window.innerWidth < 576 ? 22 : 14;
+				},
 				autoplayDelayMs: 4500,
 			});
 
